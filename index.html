@@ -27,7 +27,6 @@
     .input-focus:focus { box-shadow: 0 0 0 3px rgba(230,57,70,0.2); border-color: #e63946; }
     .stat-card { background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s; }
     .stat-card:hover { transform: translateY(-5px); }
-    .stat-card .stat-number { color: #e63946 !important; font-size: 2.5rem; font-weight: bold; }
     .toast-message { position: fixed; bottom: 20px; right: 20px; z-index: 1000; animation: slideInRight 0.3s ease; padding: 12px 24px; border-radius: 12px; }
     @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   </style>
@@ -58,266 +57,236 @@
 
   <section id="home" class="pt-32 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 opacity-60"></div>
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-        <div class="flex-1 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <i class="fas fa-star text-xs"></i>
-            <span>10+ yillik tajriba</span>
-          </div>
-          <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-            Avtomobilingiz <span class="text-primary">professional</span> qo'llarda
-          </h1>
-          <p class="text-gray-600 text-lg mt-6">Eng zamonaviy diagnostika uskunalari, tajribali ustalar va sifatli ehtiyot qismlar.</p>
-          <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
-            <a href="#order" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition shadow-lg">
-              <i class="fas fa-calendar-alt mr-2"></i>Onlayn yozilish
-            </a>
-          </div>
-        </div>
-        <div class="flex-1 flex justify-center">
-          <img src="https://placehold.co/500x450/1d3557/white?text=Premium+Auto+Service" class="rounded-3xl shadow-2xl max-w-md">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="py-20 bg-white">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-16">
-        <span class="text-primary font-semibold uppercase text-sm">Xizmatlar</span>
-        <h2 class="text-4xl font-bold mt-3">Nimani taklif qilamiz?</h2>
-        <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-      </div>
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
-            <i class="fas fa-microchip text-white text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold">Kompyuter diagnostika</h3>
-          <p class="text-gray-600 mt-2">To'liq elektron tizim tekshiruvi</p>
-        </div>
-        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
-            <i class="fas fa-oil-can text-white text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold">Moy almashtirish</h3>
-          <p class="text-gray-600 mt-2">Original moylar va filtrlar</p>
-        </div>
-        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
-            <i class="fas fa-car-battery text-white text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold">Elektr tizimi</h3>
-          <p class="text-gray-600 mt-2">Generator, starter, akkumulyator</p>
-        </div>
-        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
-            <i class="fas fa-car text-white text-2xl"></i>
-          </div>
-          <h3 class="text-xl font-bold">Shina xizmati</h3>
-          <p class="text-gray-600 mt-2">Montaj, balansirovka, saqlash</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="stats" class="py-20 gradient-bg">
-    <div class="container mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="stat-card bg-white"><i class="fas fa-smile text-4xl mb-3 text-primary"></i><div class="stat-number">5000+</div><p class="mt-2 font-semibold">Mamnun mijozlar</p></div>
-        <div class="stat-card bg-white"><i class="fas fa-tools text-4xl mb-3 text-primary"></i><div class="stat-number">15000+</div><p class="mt-2 font-semibold">Ta'mirlangan avto</p></div>
-        <div class="stat-card bg-white"><i class="fas fa-clock text-4xl mb-3 text-primary"></i><div class="stat-number">10+</div><p class="mt-2 font-semibold">Yillik tajriba</p></div>
-        <div class="stat-card bg-white"><i class="fas fa-star text-4xl mb-3 text-primary"></i><div class="stat-number">4.9</div><p class="mt-2 font-semibold">O'rtacha reyting</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="order" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6 max-w-5xl">
-      <div class="text-center mb-12">
-        <span class="text-primary font-semibold uppercase text-sm">Buyurtma</span>
-        <h2 class="text-4xl font-bold mt-3">Hoziroq yoziling</h2>
-        <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-      </div>
-      
-      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-        <div class="grid md:grid-cols-2">
-          <div class="gradient-bg p-8 text-white">
-            <i class="fas fa-headset text-5xl mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">Tez va ishonchli</h3>
-            <p class="mb-6">Arizangiz qabul qilingandan so'ng, tez orada bog'lanamiz</p>
-            <div class="space-y-3">
-              <div class="flex items-center gap-3"><i class="fas fa-phone-alt w-6"></i><span>+996 700 123 456</span></div>
-              <div class="flex items-center gap-3"><i class="fas fa-envelope w-6"></i><span>info@avtoxizmat.kg</span></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <i class="fas fa-star text-xs"></i>
+              <span>10+ yillik tajriba</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight">
+              Avtomobilingiz <span class="text-primary">professional</span> qo'llarda
+            </h1>
+            <p class="text-gray-600 text-lg mt-6">Eng zamonaviy diagnostika uskunalari, tajribali ustalar va sifatli ehtiyot qismlar.</p>
+            <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
+              <a href="#order" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition shadow-lg">
+                <i class="fas fa-calendar-alt mr-2"></i>Onlayn yozilish
+              </a>
             </div>
           </div>
-          
-          <div class="p-8">
-            <form id="orderForm" class="space-y-4">
-              <div>
-                <label class="block text-sm font-semibold mb-2"><i class="fas fa-user text-primary mr-2"></i>Ism <span class="text-primary">*</span></label>
-                <input type="text" id="ism" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
-                <div class="text-red-500 text-xs mt-1 hidden error-ism"></div>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-semibold mb-2"><i class="fas fa-user-tag text-primary mr-2"></i>Familiya</label>
-                <input type="text" id="familiya" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
-              </div>
-              
-              <div>
-                <label class="block text-sm font-semibold mb-2"><i class="fas fa-phone-alt text-primary mr-2"></i>Telefon <span class="text-primary">*</span></label>
-                <div class="flex">
-                  <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-xl px-4 flex items-center">+996</span>
-                  <input type="tel" id="nomer" placeholder="700123456" maxlength="9" class="w-full border border-gray-300 rounded-r-xl px-4 py-3 input-focus outline-none">
-                </div>
-                <div class="text-red-500 text-xs mt-1 hidden error-nomer"></div>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-semibold mb-2"><i class="fas fa-comment-dots text-primary mr-2"></i>Izoh</label>
-                <textarea id="izoh" rows="3" placeholder="Avtomobil modeli, muammo..." class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none resize-none"></textarea>
-              </div>
-              
-              <button type="submit" id="submitBtn" class="w-full gradient-bg text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
-                <i class="fas fa-paper-plane"></i> Buyurtma yuborish
-              </button>
-            </form>
+          <div class="flex-1 flex justify-center">
+            <img src="https://placehold.co/500x450/1d3557/white?text=Premium+Auto+Service" class="rounded-3xl shadow-2xl max-w-md">
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="bg-gray-900 text-gray-400 py-8 text-center">
-    <p>© 2025 AvtoXizmat. Barcha huquqlar himoyalangan.</p>
-  </footer>
+    <section id="services" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <span class="text-primary font-semibold uppercase text-sm">Xizmatlar</span>
+          <h2 class="text-4xl font-bold mt-3">Nimani taklif qilamiz?</h2>
+          <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+            <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
+              <i class="fas fa-microchip text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold">Kompyuter diagnostika</h3>
+            <p class="text-gray-600 mt-2">To'liq elektron tizim tekshiruvi</p>
+          </div>
+          <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+            <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
+              <i class="fas fa-oil-can text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold">Moy almashtirish</h3>
+            <p class="text-gray-600 mt-2">Original moylar va filtrlar</p>
+          </div>
+          <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+            <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
+              <i class="fas fa-car-battery text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold">Elektr tizimi</h3>
+            <p class="text-gray-600 mt-2">Generator, starter, akkumulyator</p>
+          </div>
+          <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+            <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
+              <i class="fas fa-car text-white text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold">Shina xizmati</h3>
+            <p class="text-gray-600 mt-2">Montaj, balansirovka, saqlash</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div id="toastMessage" class="toast-message hidden"></div>
+    <section id="stats" class="py-20 gradient-bg">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div class="stat-card bg-white"><i class="fas fa-smile text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold text-primary">5000+</div><p class="mt-2 font-semibold">Mamnun mijozlar</p></div>
+          <div class="stat-card bg-white"><i class="fas fa-tools text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold text-primary">15000+</div><p class="mt-2 font-semibold">Ta'mirlangan avto</p></div>
+          <div class="stat-card bg-white"><i class="fas fa-clock text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold text-primary">10+</div><p class="mt-2 font-semibold">Yillik tajriba</p></div>
+          <div class="stat-card bg-white"><i class="fas fa-star text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold text-primary">4.9</div><p class="mt-2 font-semibold">O'rtacha reyting</p></div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    // ⚠️ MUHIM: O'Z APPS SCRIPT URL INGIZNI SHU YERGA YOZING ⚠️
-    // Apps Script da Deploy qilgandan keyin olingan URL ni quyidagi o'zgaruvchiga joylashtiring
-    const API_URL = "https://script.google.com/macros/s/AKfycbzYcHJwRPxm3MtabBrpJDlCKvDKeuzCuRqsHjm6IvUkFkGCQtrCe01BT_W9_YfyYVTV/exec";
-    
-    // Agar URL sozlanmagan bo'lsa, test rejimi ishlaydi
-    const IS_TEST_MODE = API_URL.includes("YOUR_SCRIPT_ID");
-    
-    const form = document.getElementById('orderForm');
-    const ismInput = document.getElementById('ism');
-    const familiyaInput = document.getElementById('familiya');
-    const nomerInput = document.getElementById('nomer');
-    const izohInput = document.getElementById('izoh');
-    const submitBtn = document.getElementById('submitBtn');
-    
-    function showToast(message, isError = false) {
-      const toast = document.getElementById('toastMessage');
-      toast.className = 'toast-message fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
-      toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 4000);
-    }
-    
-    function showError(fieldId, msg) {
-      const errDiv = document.querySelector(`.error-${fieldId}`);
-      const input = document.getElementById(fieldId);
-      if (errDiv) { errDiv.innerText = msg; errDiv.classList.remove('hidden'); }
-      if (input) input.classList.add('error-border');
-    }
-    
-    function clearError(fieldId) {
-      const errDiv = document.querySelector(`.error-${fieldId}`);
-      const input = document.getElementById(fieldId);
-      if (errDiv) errDiv.classList.add('hidden');
-      if (input) input.classList.remove('error-border');
-    }
-    
-    function getCurrentDateTime() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const day = String(now.getDate()).padStart(2, '0');
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    }
-    
-    async function sendOrder(data) {
-      if (IS_TEST_MODE) {
-        console.log("TEST REJIMI - Ma'lumotlar:", data);
-        return { success: true, mock: true };
+    <section id="order" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-12">
+          <span class="text-primary font-semibold uppercase text-sm">Buyurtma</span>
+          <h2 class="text-4xl font-bold mt-3">Hoziroq yoziling</h2>
+          <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div class="grid md:grid-cols-2">
+            <div class="gradient-bg p-8 text-white">
+              <i class="fas fa-headset text-5xl mb-6"></i>
+              <h3 class="text-2xl font-bold mb-4">Tez va ishonchli</h3>
+              <p class="mb-6">Arizangiz qabul qilingandan so'ng, tez orada bog'lanamiz</p>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3"><i class="fas fa-phone-alt w-6"></i><span>+996 700 123 456</span></div>
+                <div class="flex items-center gap-3"><i class="fas fa-envelope w-6"></i><span>info@avtoxizmat.kg</span></div>
+              </div>
+            </div>
+            
+            <div class="p-8">
+              <form id="orderForm" class="space-y-4">
+                <div>
+                  <label class="block text-sm font-semibold mb-2"><i class="fas fa-user text-primary mr-2"></i>Ism <span class="text-primary">*</span></label>
+                  <input type="text" id="ism" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
+                  <div class="text-red-500 text-xs mt-1 hidden error-ism"></div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-semibold mb-2"><i class="fas fa-user-tag text-primary mr-2"></i>Familiya</label>
+                  <input type="text" id="familiya" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-semibold mb-2"><i class="fas fa-phone-alt text-primary mr-2"></i>Telefon <span class="text-primary">*</span></label>
+                  <div class="flex">
+                    <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-xl px-4 flex items-center">+996</span>
+                    <input type="tel" id="nomer" placeholder="700123456" maxlength="9" class="w-full border border-gray-300 rounded-r-xl px-4 py-3 input-focus outline-none">
+                  </div>
+                  <div class="text-red-500 text-xs mt-1 hidden error-nomer"></div>
+                </div>
+                
+                <div>
+                  <label class="block text-sm font-semibold mb-2"><i class="fas fa-comment-dots text-primary mr-2"></i>Izoh</label>
+                  <textarea id="izoh" rows="3" placeholder="Avtomobil modeli, muammo..." class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none resize-none"></textarea>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="w-full gradient-bg text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                  <i class="fas fa-paper-plane"></i> Buyurtma yuborish
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+      <p>© 2025 AvtoXizmat. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <div id="toastMessage" class="toast-message hidden"></div>
+
+    <script>
+      // =============================================
+      // O'ZINGIZNING APPS SCRIPT URL BILAN ALMASHTIRING
+      // =============================================
+      const API_URL = "https://script.google.com/macros/s/AKfycbxAoRDpXZIw6loOX0_iksR1-NCywt4jZN2Qy8Dsihwaq4pXxPOqNq5EeS2Rb702Mx2f/exec";
+      
+      const form = document.getElementById('orderForm');
+      const ismInput = document.getElementById('ism');
+      const familiyaInput = document.getElementById('familiya');
+      const nomerInput = document.getElementById('nomer');
+      const izohInput = document.getElementById('izoh');
+      const submitBtn = document.getElementById('submitBtn');
+      
+      function showToast(message, isError = false) {
+        const toast = document.getElementById('toastMessage');
+        toast.className = 'toast-message fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
+        toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 4000);
       }
       
-      try {
-        const response = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await response.json();
-        return result;
-      } catch (error) {
-        console.error("Xatolik:", error);
-        return { success: false, error: error.message };
+      function showError(fieldId, msg) {
+        const errDiv = document.querySelector(`.error-${fieldId}`);
+        const input = document.getElementById(fieldId);
+        if (errDiv) { errDiv.innerText = msg; errDiv.classList.remove('hidden'); }
+        if (input) input.classList.add('error-border');
       }
-    }
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
       
-      let isValid = true;
-      const ism = ismInput.value.trim();
-      if (!ism) { showError('ism', 'Ismingizni kiriting'); isValid = false; }
-      else { clearError('ism'); }
+      function clearError(fieldId) {
+        const errDiv = document.querySelector(`.error-${fieldId}`);
+        const input = document.getElementById(fieldId);
+        if (errDiv) errDiv.classList.add('hidden');
+        if (input) input.classList.remove('error-border');
+      }
       
-      const digits = nomerInput.value.trim().replace(/\D/g, '');
-      if (digits.length !== 9) { showError('nomer', 'Telefon raqam 9 xonali bo\'lishi kerak'); isValid = false; }
-      else { clearError('nomer'); nomerInput.value = digits; }
+      function getCurrentDateTime() {
+        const now = new Date();
+        return now.toLocaleString('uz-UZ', {timeZone: 'Asia/Bishkek'});
+      }
       
-      if (!isValid) return;
-      
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="loading-spinner"></span> Yuborilmoqda...';
-      
-      const orderData = {
-        ism: ismInput.value.trim(),
-        familiya: familiyaInput.value.trim() || "-",
-        nomer: `+996${nomerInput.value.trim()}`,
-        izoh: izohInput.value.trim() || "-",
-        vaqt: getCurrentDateTime()
-      };
-      
-      const result = await sendOrder(orderData);
-      
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Buyurtma yuborish';
-      
-      if (result.success) {
-        if (IS_TEST_MODE) {
-          showToast("⚠️ TEST REJIMI: URL sozlanmagan! Ma'lumotlar konsolga yozildi.", false);
-          console.log("Buyurtma ma'lumotlari:", orderData);
-        } else {
-          showToast("✅ Buyurtma qabul qilindi! Tez orada bog'lanamiz.", false);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        let isValid = true;
+        const ism = ismInput.value.trim();
+        if (!ism) { showError('ism', 'Ismingizni kiriting'); isValid = false; }
+        else { clearError('ism'); }
+        
+        const digits = nomerInput.value.trim().replace(/\D/g, '');
+        if (digits.length !== 9) { showError('nomer', 'Telefon raqam 9 xonali bo\'lishi kerak'); isValid = false; }
+        else { clearError('nomer'); nomerInput.value = digits; }
+        
+        if (!isValid) return;
+        
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span> Yuborilmoqda...';
+        
+        const orderData = {
+          action: "add_order",
+          ism: ismInput.value.trim(),
+          familiya: familiyaInput.value.trim() || "-",
+          nomer: `+996${nomerInput.value.trim()}`,
+          izoh: izohInput.value.trim() || "-",
+          vaqt: getCurrentDateTime()
+        };
+        
+        try {
+          const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData)
+          });
+          const result = await response.json();
+          
+          if (result.success) {
+            showToast('✅ Buyurtma qabul qilindi! Tez orada bog\'lanamiz.', false);
+            form.reset();
+          } else {
+            showToast('❌ Xatolik: ' + (result.error || 'Qaytadan urining'), true);
+          }
+        } catch (error) {
+          showToast('❌ Server bilan bog\'lanishda xatolik', true);
+          console.error(error);
         }
-        form.reset();
-      } else {
-        showToast("❌ Xatolik: " + (result.error || "Qaytadan urining"), true);
-      }
-    });
-    
-    nomerInput.addEventListener('input', function() {
-      this.value = this.value.replace(/\D/g, '').slice(0,9);
-    });
-    
-    if (IS_TEST_MODE) {
-      showToast("⚠️ Eslatma: Google Sheet URL sozlanmagan. Test rejimida ishlayapti.", false);
-      console.log("%c⚠️ DIQQAT! Google Sheet URL sozlanmagan!", "color: red; font-size: 16px");
-      console.log("%cHTML faylidagi API_URL ni o'z Apps Script URL ingiz bilan almashtiring", "color: orange; font-size: 14px");
-    }
-  </script>
-</body>
-</html>
+        
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Buyurtma yuborish';
+      });
+      
+      nomerInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0,9);
+      });
+    </script>
+  </body>
+  </html>
