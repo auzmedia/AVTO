@@ -1,207 +1,426 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auto Service | Premium</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Avto Xizmat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<script src="https://cdn.tailwindcss.com"></script>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-<style>
-body { font-family: Inter, sans-serif; }
-.hero {
-  background: radial-gradient(circle at top, #1e293b, #020617);
-}
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-}
-.card:hover { transform: translateY(-6px); transition: .3s; }
-</style>
+        /* Header */
+        .header {
+            background: rgba(0,0,0,0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
 
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #764ba2;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #764ba2;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Services */
+        .services {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        /* Form */
+        .form-section {
+            padding: 60px 0;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .form-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #764ba2;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            z-index: 2000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            background: #10b981;
+        }
+
+        .notification.error {
+            background: #ef4444;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .form-container {
+                margin: 0 20px;
+                padding: 30px;
+            }
+            .nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">🚗 Premium Auto</div>
+                <div class="nav-links">
+                    <a href="#home">Bosh sahifa</a>
+                    <a href="#services">Xizmatlar</a>
+                    <a href="#order">Buyurtma</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-<body class="bg-slate-950 text-white">
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Professional Avto Xizmat</h1>
+            <p>Sizning mashinangiz professional yondashuvga loyiq</p>
+            <a href="#order" class="btn">Buyurtma Berish</a>
+        </div>
+    </section>
 
-<!-- NAVBAR -->
-<header class="fixed top-0 w-full z-50 glass border-b border-slate-800">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Bizning Xizmatlar</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Diagnostika</h3>
+                    <p>Kompyuter diagnostikasi</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Remont</h3>
+                    <p>Har qanday remont</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Texnik xizmat</h3>
+                    <p>Muntazam tekshiruv</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h1 class="font-black text-xl">
-AUTO<span class="text-yellow-400">SERVICE</span>
-</h1>
+    <section id="order" class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2>📝 Buyurtma Qilish</h2>
+                <p>Hoziroq buyurtma bering!</p>
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label>Ismingiz *</label>
+                        <input type="text" id="ism" required placeholder="Ismingiz">
+                    </div>
+                    <div class="form-group">
+                        <label>Familiyangiz *</label>
+                        <input type="text" id="familiya" required placeholder="Familiyangiz">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon raqam *</label>
+                        <input type="tel" id="raqam" required placeholder="+998 xx xxx xx xx">
+                    </div>
+                    <div class="form-group">
+                        <label>Izoh (ixtiyoriy)</label>
+                        <textarea id="izoh" rows="3" placeholder="Qo'shimcha ma'lumot"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">✅ Yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-<nav class="hidden md:flex gap-6 text-sm text-slate-300">
-<a href="#services">Xizmatlar</a>
-<a href="#about">Biz haqimizda</a>
-<a href="#order">Buyurtma</a>
-</nav>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Premium Avto Xizmat</p>
+        </div>
+    </footer>
 
-</div>
-</header>
-
-<!-- HERO -->
-<section class="hero min-h-screen flex items-center pt-24 px-6">
-
-<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-
-<div>
-
-<h1 class="text-5xl md:text-6xl font-black leading-tight">
-Professional<br>
-<span class="text-yellow-400">Auto Service</span>
-</h1>
-
-<p class="text-slate-400 mt-6">
-Motor, elektrika, diagnostika va texnik xizmatlar.
-Tez, ishonchli va kafolat bilan.
-</p>
-
-<a href="#order" class="inline-block mt-8 bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold">
-Buyurtma berish
-</a>
-
-</div>
-
-<div class="glass p-6 rounded-3xl border border-slate-700">
-
-<h3 class="font-bold mb-4">Statistika</h3>
-
-<div class="grid grid-cols-2 gap-4 text-center">
-
-<div class="bg-slate-900 p-4 rounded-xl">
-<p class="text-2xl font-bold text-yellow-400">1200+</p>
-<p class="text-sm text-slate-400">Mijozlar</p>
-</div>
-
-<div class="bg-slate-900 p-4 rounded-xl">
-<p class="text-2xl font-bold text-yellow-400">10y</p>
-<p class="text-sm text-slate-400">Tajriba</p>
-</div>
-
-<div class="bg-slate-900 p-4 rounded-xl">
-<p class="text-2xl font-bold text-yellow-400">24/7</p>
-<p class="text-sm text-slate-400">Xizmat</p>
-</div>
-
-<div class="bg-slate-900 p-4 rounded-xl">
-<p class="text-2xl font-bold text-yellow-400">99%</p>
-<p class="text-sm text-slate-400">Sifat</p>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-20 px-6">
-
-<div class="max-w-7xl mx-auto">
-
-<h2 class="text-3xl font-bold text-center mb-10">Xizmatlar</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<div class="bg-slate-900 p-6 rounded-2xl card">
-🔧 Motor ta'miri
-</div>
-
-<div class="bg-slate-900 p-6 rounded-2xl card">
-⚡ Elektrika
-</div>
-
-<div class="bg-slate-900 p-6 rounded-2xl card">
-🖥 Diagnostika
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ORDER FORM -->
-<section id="order" class="py-24 px-6">
-
-<div class="max-w-xl mx-auto bg-slate-900 p-8 rounded-2xl border border-slate-700">
-
-<h2 class="text-2xl font-bold mb-6 text-center">Buyurtma qoldirish</h2>
-
-<form id="orderForm" class="space-y-4">
-
-<input name="ism" placeholder="Ism" class="w-full p-3 rounded bg-slate-800">
-
-<input name="familiya" placeholder="Familiya" class="w-full p-3 rounded bg-slate-800">
-
-<input name="raqam" placeholder="Telefon" class="w-full p-3 rounded bg-slate-800">
-
-<textarea name="izoh" placeholder="Izoh" class="w-full p-3 rounded bg-slate-800"></textarea>
-
-<button class="w-full bg-yellow-400 text-black font-bold py-3 rounded-xl">
-Yuborish
-</button>
-
-<p id="msg" class="text-center text-sm mt-2"></p>
-
-</form>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="py-10 text-center text-slate-500">
-© 2026 Auto Service
-</footer>
-
-<script>
-
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVqwa1RShAtAZhmhShB6MZxB2e5-CEfj34lXJ_35gjMKzWL0fQbiR5XGQNiC-HIwqq/exec";
-
-document.getElementById("orderForm").addEventListener("submit", async (e) => {
-
-e.preventDefault();
-
-const f = e.target;
-
-const data = {
-ism: f.ism.value,
-familiya: f.familiya.value,
-raqam: f.raqam.value,
-izoh: f.izoh.value
-};
-
-document.getElementById("msg").innerText = "Yuborilmoqda...";
-
-try {
-
-const res = await fetch(SCRIPT_URL, {
-method: "POST",
-body: JSON.stringify(data)
-});
-
-const json = await res.json();
-
-if(json.success){
-document.getElementById("msg").innerText = "✅ Buyurtma yuborildi";
-f.reset();
-} else {
-document.getElementById("msg").innerText = "❌ Xatolik";
-}
-
-} catch(e){
-document.getElementById("msg").innerText = "❌ Server error";
-}
-
-});
-
-</script>
-
+    <script>
+        // ==================== O'Z URL INGIZNI YOZING ====================
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYYi8bodMPaZoiE3elwGIIEXhY2coIt1_bPzVdDe7nmgt9Bj3OmN8UYxFuuh-wfuHW/exec";
+        
+        const form = document.getElementById('orderForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const ism = document.getElementById('ism').value.trim();
+            const familiya = document.getElementById('familiya').value.trim();
+            const raqam = document.getElementById('raqam').value.trim();
+            const izoh = document.getElementById('izoh').value.trim();
+            
+            if (!ism || ism.length < 2) {
+                showNotification("Ismingizni kiriting!", "error");
+                return;
+            }
+            
+            if (!familiya || familiya.length < 2) {
+                showNotification("Familiyangizni kiriting!", "error");
+                return;
+            }
+            
+            if (!raqam || raqam.length < 9) {
+                showNotification("Telefon raqam kiriting!", "error");
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Yuborilmoqda...";
+            
+            try {
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ism: ism,
+                        familiya: familiya,
+                        raqam: raqam,
+                        izoh: izoh
+                    })
+                });
+                
+                showNotification("✅ Buyurtma qabul qilindi!", "success");
+                form.reset();
+                
+            } catch (error) {
+                showNotification("❌ Xatolik! Qaytadan urining.", "error");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "✅ Yuborish";
+            }
+        });
+        
+        function showNotification(message, type) {
+            const oldNotif = document.querySelector('.notification');
+            if (oldNotif) oldNotif.remove();
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 4000);
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
