@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>AvtoXizmat | Premium avtomobil xizmati</title>
+  <title>AvtoXizmat | Professional avtomobil xizmati</title>
+  <!-- Tailwind CSS v3 + Font Awesome + Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -21,16 +22,11 @@
           },
           animation: {
             'fade-in-up': 'fadeInUp 0.8s ease-out',
-            'slide-in-left': 'slideInLeft 0.6s ease-out',
           },
           keyframes: {
             fadeInUp: {
               '0%': { opacity: '0', transform: 'translateY(30px)' },
               '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            slideInLeft: {
-              '0%': { opacity: '0', transform: 'translateX(-50px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
             }
           }
         }
@@ -51,12 +47,9 @@
       transform: translateY(-10px) scale(1.02);
       box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
     }
-    .error-border { border-color: #e63946 !important; background-color: #fff5f5 !important; }
-    .success-message { animation: fadeOut 4s ease forwards; }
-    @keyframes fadeOut {
-      0% { opacity: 1; transform: translateY(0); }
-      70% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; transform: translateY(-10px); }
+    .error-border { 
+      border-color: #e63946 !important; 
+      background-color: #fff5f5 !important; 
     }
     .loading-spinner {
       border: 2px solid rgba(255,255,255,0.3);
@@ -68,14 +61,16 @@
       display: inline-block;
       margin-right: 8px;
     }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
     .input-focus:focus {
       box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
       border-color: #e63946;
     }
     .stat-card {
       background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
       border-radius: 1rem;
       padding: 1.5rem;
       transition: transform 0.3s;
@@ -89,6 +84,23 @@
     .stat-card p {
       color: #1d3557 !important;
       font-weight: 600;
+    }
+    .toast-message {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      animation: slideInRight 0.3s ease;
+    }
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -204,7 +216,7 @@
     </div>
   </section>
 
-  <!-- STATISTICS SECTION - to'g'rilangan -->
+  <!-- STATISTICS SECTION -->
   <section id="stats" class="py-20 gradient-bg">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8 text-center">
@@ -307,8 +319,6 @@
               
               <input type="hidden" id="vaqt" name="vaqt">
               
-              <div id="formStatus" class="text-center text-sm font-medium hidden"></div>
-              
               <button type="submit" id="submitBtn" 
                       class="w-full gradient-bg text-white font-bold py-3.5 rounded-xl transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg">
                 <i class="fas fa-paper-plane"></i> Buyurtma yuborish
@@ -368,21 +378,32 @@
     </div>
   </footer>
 
+  <div id="toastMessage" class="toast-message hidden"></div>
+
   <script>
     (function() {
-      // =============================================
-      // O'ZINGIZNING MA'LUMOTLARINGIZNI KIRITING
-      // =============================================
-      const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyRnVLUq33iT95q1tOVNaAewYE9LNH_7vn4adon-abGFW-Tinf-DbcOCG2WvEX0Ge72/exec";
+      // =====================================================
+      // ⚠️ O'ZINGIZNING GOOGLE SCRIPT URL NI KIRITING ⚠️
+      // =====================================================
+      const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxEFWkjx4ARBe-ykYxS56EyNHfaac6Au28FULejR0shrqPD9J7UC5rnORD4LJbHSV1x/exec";
       
       const form = document.getElementById('orderForm');
       const ismInput = document.getElementById('ism');
-      const familiyaInput = document document.getElementById('familiya');
+      const familiyaInput = document.getElementById('familiya');
       const nomerInput = document.getElementById('nomer');
       const izohInput = document.getElementById('izoh');
       const vaqtHidden = document.getElementById('vaqt');
       const submitBtn = document.getElementById('submitBtn');
-      const formStatus = document.getElementById('formStatus');
+      
+      function showToast(message, isError = false) {
+        const toast = document.getElementById('toastMessage');
+        toast.className = 'toast-message fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
+        toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
+        toast.classList.remove('hidden');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 4000);
+      }
       
       function showFieldError(fieldId, message) {
         const errDiv = document.querySelector(`.error-${fieldId}`);
@@ -428,7 +449,13 @@
       
       function getCurrentDateTime() {
         const now = new Date();
-        return now.toLocaleString('uz-UZ', {timeZone: 'Asia/Bishkek'});
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
       }
       
       function getFormData() {
@@ -445,7 +472,7 @@
         if (GOOGLE_SHEET_API_URL.includes("YOUR_SCRIPT_ID")) {
           console.warn("⚠️ Google Sheet URL sozlanmagan!");
           console.log("Ma'lumot:", orderData);
-          alert("Test rejimi! Google Sheet API URL sozlanmagan.\nMa'lumotlar konsolga yozildi.");
+          showToast("Test rejimi: Google Sheet URL sozlanmagan! Ma'lumotlar konsolga yozildi.", false);
           return { success: true, mock: true };
         }
         
@@ -456,6 +483,11 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
           });
+          
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+          
           const result = await response.json();
           return { success: true, data: result };
         } catch (error) {
@@ -471,7 +503,6 @@
         submitBtn.disabled = true;
         const originalHtml = submitBtn.innerHTML;
         submitBtn.innerHTML = `<span class="loading-spinner"></span> Yuborilmoqda...`;
-        formStatus.classList.add('hidden');
         
         const order = getFormData();
         vaqtHidden.value = order.vaqt;
@@ -482,17 +513,11 @@
         submitBtn.innerHTML = originalHtml;
         
         if (result.success) {
-          formStatus.classList.remove('hidden');
-          formStatus.innerHTML = '<div class="bg-green-100 text-green-700 p-3 rounded-xl"><i class="fas fa-check-circle"></i> ✅ Buyurtma qabul qilindi! Tez orada bog‘lanamiz.</div>';
+          showToast("✅ Buyurtma qabul qilindi! Tez orada bog'lanamiz.", false);
           form.reset();
           nomerInput.value = '';
-          setTimeout(() => {
-            formStatus.innerHTML = '';
-            formStatus.classList.add('hidden');
-          }, 5000);
         } else {
-          formStatus.classList.remove('hidden');
-          formStatus.innerHTML = `<div class="bg-red-100 text-red-700 p-3 rounded-xl"><i class="fas fa-exclamation-triangle"></i> Xatolik: ${result.error}. Qaytadan urining.</div>`;
+          showToast("❌ Xatolik: " + (result.error || "Qaytadan urining"), true);
         }
       });
       
@@ -504,6 +529,13 @@
       setInterval(() => {
         vaqtHidden.value = getCurrentDateTime();
       }, 1000);
+      
+      if (GOOGLE_SHEET_API_URL.includes("YOUR_SCRIPT_ID")) {
+        console.log("%c⚠️ DIQQAT! Google Sheet URL sozlanmagan!", "color: red; font-size: 16px");
+        console.log("%cHTML faylidagi GOOGLE_SHEET_API_URL ni o'z URL ingiz bilan almashtiring", "color: orange; font-size: 14px");
+      } else {
+        console.log("%c✅ Google Sheet URL sozlangan: " + GOOGLE_SHEET_API_URL, "color: green; font-size: 14px");
+      }
     })();
   </script>
 </body>
