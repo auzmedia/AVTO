@@ -5,22 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>AvtoXizmat | Professional avtomobil xizmati</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            'sans': ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            primary: '#e63946',
-            secondary: '#1d3557',
-            dark: '#0f172a',
-          },
-        }
-      }
-    }
-  </script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -43,14 +27,13 @@
     .input-focus:focus { box-shadow: 0 0 0 3px rgba(230,57,70,0.2); border-color: #e63946; }
     .stat-card { background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s; }
     .stat-card:hover { transform: translateY(-5px); }
-    .stat-card .stat-number { color: #e63946 !important; }
-    .toast-message { position: fixed; bottom: 20px; right: 20px; z-index: 1000; animation: slideInRight 0.3s ease; }
+    .stat-card .stat-number { color: #e63946 !important; font-size: 2.5rem; font-weight: bold; }
+    .toast-message { position: fixed; bottom: 20px; right: 20px; z-index: 1000; animation: slideInRight 0.3s ease; padding: 12px 24px; border-radius: 12px; }
     @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   </style>
 </head>
 <body class="bg-gray-50">
 
-  <!-- NAVBAR -->
   <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
     <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
@@ -73,7 +56,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section id="home" class="pt-32 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 opacity-60"></div>
     <div class="container mx-auto px-6 relative z-10">
@@ -100,7 +82,6 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section id="services" class="py-20 bg-white">
     <div class="container mx-auto px-6">
       <div class="text-center mb-16">
@@ -141,19 +122,17 @@
     </div>
   </section>
 
-  <!-- STATISTICS -->
   <section id="stats" class="py-20 gradient-bg">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="stat-card"><i class="fas fa-smile text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">5000+</div><p class="mt-2 font-semibold">Mamnun mijozlar</p></div>
-        <div class="stat-card"><i class="fas fa-tools text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">15000+</div><p class="mt-2 font-semibold">Ta'mirlangan avto</p></div>
-        <div class="stat-card"><i class="fas fa-clock text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">10+</div><p class="mt-2 font-semibold">Yillik tajriba</p></div>
-        <div class="stat-card"><i class="fas fa-star text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">4.9</div><p class="mt-2 font-semibold">O'rtacha reyting</p></div>
+        <div class="stat-card bg-white"><i class="fas fa-smile text-4xl mb-3 text-primary"></i><div class="stat-number">5000+</div><p class="mt-2 font-semibold">Mamnun mijozlar</p></div>
+        <div class="stat-card bg-white"><i class="fas fa-tools text-4xl mb-3 text-primary"></i><div class="stat-number">15000+</div><p class="mt-2 font-semibold">Ta'mirlangan avto</p></div>
+        <div class="stat-card bg-white"><i class="fas fa-clock text-4xl mb-3 text-primary"></i><div class="stat-number">10+</div><p class="mt-2 font-semibold">Yillik tajriba</p></div>
+        <div class="stat-card bg-white"><i class="fas fa-star text-4xl mb-3 text-primary"></i><div class="stat-number">4.9</div><p class="mt-2 font-semibold">O'rtacha reyting</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ORDER FORM -->
   <section id="order" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 max-w-5xl">
       <div class="text-center mb-12">
@@ -211,17 +190,19 @@
     </div>
   </section>
 
-  <footer class="bg-dark text-gray-400 py-8 text-center">
+  <footer class="bg-gray-900 text-gray-400 py-8 text-center">
     <p>© 2025 AvtoXizmat. Barcha huquqlar himoyalangan.</p>
   </footer>
 
   <div id="toastMessage" class="toast-message hidden"></div>
 
   <script>
-    // =====================================================
-    // O'Z APPS SCRIPT URL INGIZNI KIRITING
-    // =====================================================
-    const API_URL = "https://script.google.com/macros/s/AKfycby0Qo5bX_EVzNgQqh8OAp4SPs2eDkDeoc0PC8gP7n_lVuqlrdX6TOAkS0smwOna6NnJ/exec";
+    // ⚠️ MUHIM: O'Z APPS SCRIPT URL INGIZNI SHU YERGA YOZING ⚠️
+    // Apps Script da Deploy qilgandan keyin olingan URL ni quyidagi o'zgaruvchiga joylashtiring
+    const API_URL = "https://script.google.com/macros/s/AKfycbzYcHJwRPxm3MtabBrpJDlCKvDKeuzCuRqsHjm6IvUkFkGCQtrCe01BT_W9_YfyYVTV/exec";
+    
+    // Agar URL sozlanmagan bo'lsa, test rejimi ishlaydi
+    const IS_TEST_MODE = API_URL.includes("YOUR_SCRIPT_ID");
     
     const form = document.getElementById('orderForm');
     const ismInput = document.getElementById('ism');
@@ -232,10 +213,12 @@
     
     function showToast(message, isError = false) {
       const toast = document.getElementById('toastMessage');
-      toast.className = 'toast-message px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
+      toast.className = 'toast-message fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
       toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
       toast.classList.remove('hidden');
-      setTimeout(() => toast.classList.add('hidden'), 4000);
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
     }
     
     function showError(fieldId, msg) {
@@ -254,35 +237,20 @@
     
     function getCurrentDateTime() {
       const now = new Date();
-      return now.toLocaleString('uz-UZ', {timeZone: 'Asia/Bishkek'});
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
     
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Validatsiya
-      let isValid = true;
-      const ism = ismInput.value.trim();
-      if (!ism) { showError('ism', 'Ismingizni kiriting'); isValid = false; }
-      else { clearError('ism'); }
-      
-      const digits = nomerInput.value.trim().replace(/\D/g, '');
-      if (digits.length !== 9) { showError('nomer', '9 xonali raqam kiriting'); isValid = false; }
-      else { clearError('nomer'); nomerInput.value = digits; }
-      
-      if (!isValid) return;
-      
-      // Yuborish
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="loading-spinner"></span> Yuborilmoqda...';
-      
-      const data = {
-        ism: ismInput.value.trim(),
-        familiya: familiyaInput.value.trim() || "-",
-        nomer: `+996${nomerInput.value.trim()}`,
-        izoh: izohInput.value.trim() || "-",
-        vaqt: getCurrentDateTime()
-      };
+    async function sendOrder(data) {
+      if (IS_TEST_MODE) {
+        console.log("TEST REJIMI - Ma'lumotlar:", data);
+        return { success: true, mock: true };
+      }
       
       try {
         const response = await fetch(API_URL, {
@@ -291,25 +259,65 @@
           body: JSON.stringify(data)
         });
         const result = await response.json();
-        
-        if (result.success) {
-          showToast('✅ Buyurtma qabul qilindi! Tez orada bog\'lanamiz.');
-          form.reset();
-        } else {
-          showToast('❌ Xatolik: ' + (result.error || 'Qaytadan urining'), true);
-        }
+        return result;
       } catch (error) {
-        showToast('❌ Server bilan bog\'lanishda xatolik', true);
-        console.error(error);
+        console.error("Xatolik:", error);
+        return { success: false, error: error.message };
       }
+    }
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+      const ism = ismInput.value.trim();
+      if (!ism) { showError('ism', 'Ismingizni kiriting'); isValid = false; }
+      else { clearError('ism'); }
+      
+      const digits = nomerInput.value.trim().replace(/\D/g, '');
+      if (digits.length !== 9) { showError('nomer', 'Telefon raqam 9 xonali bo\'lishi kerak'); isValid = false; }
+      else { clearError('nomer'); nomerInput.value = digits; }
+      
+      if (!isValid) return;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span> Yuborilmoqda...';
+      
+      const orderData = {
+        ism: ismInput.value.trim(),
+        familiya: familiyaInput.value.trim() || "-",
+        nomer: `+996${nomerInput.value.trim()}`,
+        izoh: izohInput.value.trim() || "-",
+        vaqt: getCurrentDateTime()
+      };
+      
+      const result = await sendOrder(orderData);
       
       submitBtn.disabled = false;
       submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Buyurtma yuborish';
+      
+      if (result.success) {
+        if (IS_TEST_MODE) {
+          showToast("⚠️ TEST REJIMI: URL sozlanmagan! Ma'lumotlar konsolga yozildi.", false);
+          console.log("Buyurtma ma'lumotlari:", orderData);
+        } else {
+          showToast("✅ Buyurtma qabul qilindi! Tez orada bog'lanamiz.", false);
+        }
+        form.reset();
+      } else {
+        showToast("❌ Xatolik: " + (result.error || "Qaytadan urining"), true);
+      }
     });
     
     nomerInput.addEventListener('input', function() {
       this.value = this.value.replace(/\D/g, '').slice(0,9);
     });
+    
+    if (IS_TEST_MODE) {
+      showToast("⚠️ Eslatma: Google Sheet URL sozlanmagan. Test rejimida ishlayapti.", false);
+      console.log("%c⚠️ DIQQAT! Google Sheet URL sozlanmagan!", "color: red; font-size: 16px");
+      console.log("%cHTML faylidagi API_URL ni o'z Apps Script URL ingiz bilan almashtiring", "color: orange; font-size: 14px");
+    }
   </script>
 </body>
 </html>
