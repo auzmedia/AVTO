@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>AvtoXizmat | Premium avtomobil xizmati</title>
-  <!-- Tailwind CSS v3 + Font Awesome + Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,7 +22,6 @@
           animation: {
             'fade-in-up': 'fadeInUp 0.8s ease-out',
             'slide-in-left': 'slideInLeft 0.6s ease-out',
-            'pulse-slow': 'pulse 3s infinite',
           },
           keyframes: {
             fadeInUp: {
@@ -44,7 +42,7 @@
   <style>
     body { scroll-behavior: smooth; }
     .gradient-bg {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
     }
     .service-card {
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -78,6 +76,19 @@
     .stat-card {
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+    .stat-card .text-4xl {
+      color: #e63946 !important;
+    }
+    .stat-card p {
+      color: #1d3557 !important;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -97,7 +108,7 @@
           <a href="#home" class="text-gray-700 hover:text-primary transition font-medium">Bosh sahifa</a>
           <a href="#services" class="text-gray-700 hover:text-primary transition font-medium">Xizmatlar</a>
           <a href="#stats" class="text-gray-700 hover:text-primary transition font-medium">Statistika</a>
-          <a href="#contact" class="text-gray-700 hover:text-primary transition font-medium">Bog'lanish</a>
+          <a href="#order" class="text-gray-700 hover:text-primary transition font-medium">Buyurtma</a>
         </div>
         <a href="#order" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition shadow-lg hover:shadow-xl">
           <i class="fas fa-calendar-check mr-2"></i>Yozilish
@@ -106,7 +117,7 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION with modern design -->
+  <!-- HERO SECTION -->
   <section id="home" class="pt-32 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 opacity-60"></div>
     <div class="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
@@ -193,35 +204,35 @@
     </div>
   </section>
 
-  <!-- STATISTICS SECTION -->
-  <section id="stats" class="py-16 gradient-bg text-white">
+  <!-- STATISTICS SECTION - to'g'rilangan -->
+  <section id="stats" class="py-20 gradient-bg">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="stat-card rounded-2xl p-6">
+        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
           <i class="fas fa-smile text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold">5000+</div>
-          <p class="mt-2 text-gray-600">Mamnun mijozlar</p>
+          <div class="text-4xl font-bold text-primary">5000+</div>
+          <p class="mt-2 text-secondary font-semibold">Mamnun mijozlar</p>
         </div>
-        <div class="stat-card rounded-2xl p-6">
+        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
           <i class="fas fa-tools text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold">15000+</div>
-          <p class="mt-2 text-gray-600">Ta'mirlangan avto</p>
+          <div class="text-4xl font-bold text-primary">15000+</div>
+          <p class="mt-2 text-secondary font-semibold">Ta'mirlangan avto</p>
         </div>
-        <div class="stat-card rounded-2xl p-6">
+        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
           <i class="fas fa-clock text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold">10+</div>
-          <p class="mt-2 text-gray-600">Yillik tajriba</p>
+          <div class="text-4xl font-bold text-primary">10+</div>
+          <p class="mt-2 text-secondary font-semibold">Yillik tajriba</p>
         </div>
-        <div class="stat-card rounded-2xl p-6">
+        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
           <i class="fas fa-star text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold">4.9</div>
-          <p class="mt-2 text-gray-600">O'rtacha reyting</p>
+          <div class="text-4xl font-bold text-primary">4.9</div>
+          <p class="mt-2 text-secondary font-semibold">O'rtacha reyting</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ORDER FORM SECTION - Modern Design -->
+  <!-- ORDER FORM SECTION -->
   <section id="order" class="py-20 bg-gradient-to-br from-gray-50 to-white">
     <div class="container mx-auto px-6 max-w-5xl">
       <div class="text-center mb-12">
@@ -233,7 +244,6 @@
       
       <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
         <div class="grid md:grid-cols-2">
-          <!-- Left side - Info -->
           <div class="gradient-bg p-8 text-white">
             <i class="fas fa-headset text-5xl mb-6"></i>
             <h3 class="text-2xl font-bold mb-4">Tez va ishonchli</h3>
@@ -254,23 +264,22 @@
             </div>
           </div>
           
-          <!-- Right side - Form -->
           <div class="p-8">
             <form id="orderForm" class="space-y-5">
               <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-user text-primary mr-2"></i>Ismingiz <span class="text-primary">*</span>
+                  <i class="fas fa-user text-primary mr-2"></i>Ism <span class="text-primary">*</span>
                 </label>
-                <input type="text" id="ism" name="ism" required placeholder="Ismingizni kiriting" 
+                <input type="text" id="ism" name="ism" required placeholder="Ismingiz" 
                        class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition">
                 <div class="text-red-500 text-xs mt-1 hidden error-ism"></div>
               </div>
               
               <div>
                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-user-tag text-primary mr-2"></i>Familiyangiz
+                  <i class="fas fa-user-tag text-primary mr-2"></i>Familiya
                 </label>
-                <input type="text" id="familiya" name="familiya" placeholder="Familiyangizni kiriting" 
+                <input type="text" id="familiya" name="familiya" placeholder="Familiyangiz" 
                        class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition">
                 <div class="text-red-500 text-xs mt-1 hidden error-familiya"></div>
               </div>
@@ -292,7 +301,7 @@
                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                   <i class="fas fa-comment-dots text-primary mr-2"></i>Izoh
                 </label>
-                <textarea id="izoh" name="izoh" rows="3" placeholder="Avtomobil modeli, yili, kerakli xizmat turi..." 
+                <textarea id="izoh" name="izoh" rows="3" placeholder="Avtomobil modeli, yili, kerakli xizmat..." 
                           class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition resize-none"></textarea>
               </div>
               
@@ -315,7 +324,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="bg-dark text-gray-400 py-12">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8">
@@ -362,14 +370,14 @@
 
   <script>
     (function() {
-      // ======================= KONFIGURATSIYA ========================
-      // GOOGLE SHEETS WEB APP URL - Apps Script veb-ilovangiz URL
-      // O'ZINGIZNING HAQIQIY URL BILAN ALMASHTIRING
-      const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzs6C_DUk4VwCGGl35KUTxg8SB_WY6HY5_dm1JSVmJt89UwxYLltnKnLUa2IDXhs9XK/exec"; 
+      // =============================================
+      // O'ZINGIZNING MA'LUMOTLARINGIZNI KIRITING
+      // =============================================
+      const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzOt5ork4E4AKMXGGD64DsLw6Tj4k8A07BdDkEtMExiHMf2J0S1MXt5oyyq1IBwaTM-/exec";
       
       const form = document.getElementById('orderForm');
       const ismInput = document.getElementById('ism');
-      const familiyaInput = document.getElementById('familiya');
+      const familiyaInput = document document.getElementById('familiya');
       const nomerInput = document.getElementById('nomer');
       const izohInput = document.getElementById('izoh');
       const vaqtHidden = document.getElementById('vaqt');
@@ -400,7 +408,7 @@
         let isValid = true;
         const ism = ismInput.value.trim();
         if (!ism) {
-          showFieldError('ism', 'Iltimos, ismingizni kiriting');
+          showFieldError('ism', 'Ismingizni kiriting');
           isValid = false;
         } else {
           clearFieldError('ism');
@@ -415,41 +423,36 @@
           nomerInput.value = digitsOnly;
         }
         
-        clearFieldError('familiya');
         return isValid;
       }
       
       function getCurrentDateTime() {
         const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        return now.toLocaleString('uz-UZ', {timeZone: 'Asia/Bishkek'});
       }
       
       function getFormData() {
         return {
           ism: ismInput.value.trim(),
           familiya: familiyaInput.value.trim() || "-",
-          nomer: `+996${nomerInput.value.trim().replace(/\D/g, '')}`,
-          izoh: izohInput.value.trim() || "Izoh qoldirilmagan",
+          nomer: `+996${nomerInput.value.trim()}`,
+          izoh: izohInput.value.trim() || "-",
           vaqt: getCurrentDateTime()
         };
       }
       
       async function sendToGoogleSheets(orderData) {
-        if (GOOGLE_SHEET_API_URL === "https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_ID/exec") {
-          console.warn("⚠️ Google Sheets API sozlanmagan!");
-          console.log("Simulyatsiya:", orderData);
+        if (GOOGLE_SHEET_API_URL.includes("YOUR_SCRIPT_ID")) {
+          console.warn("⚠️ Google Sheet URL sozlanmagan!");
+          console.log("Ma'lumot:", orderData);
+          alert("Test rejimi! Google Sheet API URL sozlanmagan.\nMa'lumotlar konsolga yozildi.");
           return { success: true, mock: true };
         }
         
         try {
           const response = await fetch(GOOGLE_SHEET_API_URL, {
             method: 'POST',
+            mode: 'cors',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData)
           });
@@ -480,11 +483,7 @@
         
         if (result.success) {
           formStatus.classList.remove('hidden');
-          if (result.mock) {
-            formStatus.innerHTML = '<div class="bg-yellow-100 text-yellow-700 p-3 rounded-xl"><i class="fas fa-info-circle"></i> Test rejimi! Google Sheet URL sozlanmagan.</div>';
-          } else {
-            formStatus.innerHTML = '<div class="bg-green-100 text-green-700 p-3 rounded-xl"><i class="fas fa-check-circle"></i> ✅ Buyurtma qabul qilindi! Tez orada bog‘lanamiz.</div>';
-          }
+          formStatus.innerHTML = '<div class="bg-green-100 text-green-700 p-3 rounded-xl"><i class="fas fa-check-circle"></i> ✅ Buyurtma qabul qilindi! Tez orada bog‘lanamiz.</div>';
           form.reset();
           nomerInput.value = '';
           setTimeout(() => {
@@ -493,7 +492,7 @@
           }, 5000);
         } else {
           formStatus.classList.remove('hidden');
-          formStatus.innerHTML = `<div class="bg-red-100 text-red-700 p-3 rounded-xl"><i class="fas fa-exclamation-triangle"></i> Xatolik: ${result.error}. Iltimos qaytadan urining.</div>`;
+          formStatus.innerHTML = `<div class="bg-red-100 text-red-700 p-3 rounded-xl"><i class="fas fa-exclamation-triangle"></i> Xatolik: ${result.error}. Qaytadan urining.</div>`;
         }
       });
       
@@ -503,7 +502,7 @@
       
       vaqtHidden.value = getCurrentDateTime();
       setInterval(() => {
-        if (document.activeElement !== submitBtn) vaqtHidden.value = getCurrentDateTime();
+        vaqtHidden.value = getCurrentDateTime();
       }, 1000);
     })();
   </script>
