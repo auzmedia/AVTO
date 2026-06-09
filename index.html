@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>AvtoXizmat | Professional avtomobil xizmati</title>
-  <!-- Tailwind CSS v3 + Font Awesome + Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -16,19 +15,8 @@
           colors: {
             primary: '#e63946',
             secondary: '#1d3557',
-            accent: '#f4a261',
             dark: '#0f172a',
-            light: '#f8fafc',
           },
-          animation: {
-            'fade-in-up': 'fadeInUp 0.8s ease-out',
-          },
-          keyframes: {
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
         }
       }
     }
@@ -36,21 +24,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body { scroll-behavior: smooth; }
-    .gradient-bg {
-      background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
-    }
-    .service-card {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
-    }
-    .error-border { 
-      border-color: #e63946 !important; 
-      background-color: #fff5f5 !important; 
-    }
+    body { scroll-behavior: smooth; font-family: 'Poppins', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #e63946 0%, #c1121f 100%); }
+    .service-card { transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25); }
+    .error-border { border-color: #e63946 !important; background-color: #fff5f5 !important; }
     .loading-spinner {
       border: 2px solid rgba(255,255,255,0.3);
       border-radius: 50%;
@@ -61,52 +39,18 @@
       display: inline-block;
       margin-right: 8px;
     }
-    @keyframes spin { 
-      0% { transform: rotate(0deg); } 
-      100% { transform: rotate(360deg); } 
-    }
-    .input-focus:focus {
-      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
-      border-color: #e63946;
-    }
-    .stat-card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      transition: transform 0.3s;
-    }
-    .stat-card:hover {
-      transform: translateY(-5px);
-    }
-    .stat-card .text-4xl {
-      color: #e63946 !important;
-    }
-    .stat-card p {
-      color: #1d3557 !important;
-      font-weight: 600;
-    }
-    .toast-message {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      animation: slideInRight 0.3s ease;
-    }
-    @keyframes slideInRight {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .input-focus:focus { box-shadow: 0 0 0 3px rgba(230,57,70,0.2); border-color: #e63946; }
+    .stat-card { background: rgba(255,255,255,0.95); border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s; }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-card .stat-number { color: #e63946 !important; }
+    .toast-message { position: fixed; bottom: 20px; right: 20px; z-index: 1000; animation: slideInRight 0.3s ease; }
+    @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   </style>
 </head>
-<body class="font-sans bg-light text-dark">
+<body class="bg-gray-50">
 
-  <!-- MODERN NAVBAR -->
+  <!-- NAVBAR -->
   <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
     <div class="container mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
@@ -114,144 +58,108 @@
           <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
             <i class="fas fa-car text-white text-xl"></i>
           </div>
-          <span class="font-bold text-2xl tracking-tight">Avto<span class="text-primary">Xizmat</span></span>
+          <span class="font-bold text-2xl">Avto<span class="text-primary">Xizmat</span></span>
         </div>
         <div class="hidden md:flex space-x-8">
-          <a href="#home" class="text-gray-700 hover:text-primary transition font-medium">Bosh sahifa</a>
-          <a href="#services" class="text-gray-700 hover:text-primary transition font-medium">Xizmatlar</a>
-          <a href="#stats" class="text-gray-700 hover:text-primary transition font-medium">Statistika</a>
-          <a href="#order" class="text-gray-700 hover:text-primary transition font-medium">Buyurtma</a>
+          <a href="#home" class="text-gray-700 hover:text-primary transition">Bosh sahifa</a>
+          <a href="#services" class="text-gray-700 hover:text-primary transition">Xizmatlar</a>
+          <a href="#stats" class="text-gray-700 hover:text-primary transition">Statistika</a>
+          <a href="#order" class="text-gray-700 hover:text-primary transition">Buyurtma</a>
         </div>
-        <a href="#order" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition shadow-lg hover:shadow-xl">
+        <a href="#order" class="bg-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition">
           <i class="fas fa-calendar-check mr-2"></i>Yozilish
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section id="home" class="pt-32 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 opacity-60"></div>
-    <div class="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-10 left-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
-    
     <div class="container mx-auto px-6 relative z-10">
       <div class="flex flex-col lg:flex-row items-center gap-12">
-        <div class="flex-1 text-center lg:text-left animate-[fadeInUp_0.6s_ease-out]">
+        <div class="flex-1 text-center lg:text-left">
           <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <i class="fas fa-star text-xs"></i>
             <span>10+ yillik tajriba</span>
           </div>
           <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight">
-            Avtomobilingiz 
-            <span class="text-primary">professional</span> 
-            qo'llarda
+            Avtomobilingiz <span class="text-primary">professional</span> qo'llarda
           </h1>
-          <p class="text-gray-600 text-lg mt-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            Eng zamonaviy diagnostika uskunalari, tajribali ustalar va sifatli ehtiyot qismlar. 
-            Sizning avtomobilingiz ishonchli himoyada.
-          </p>
+          <p class="text-gray-600 text-lg mt-6">Eng zamonaviy diagnostika uskunalari, tajribali ustalar va sifatli ehtiyot qismlar.</p>
           <div class="flex flex-wrap gap-4 mt-8 justify-center lg:justify-start">
-            <a href="#order" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition shadow-lg flex items-center gap-2">
-              <i class="fas fa-calendar-alt"></i> Onlayn yozilish
-            </a>
-            <a href="#services" class="border-2 border-primary text-primary px-8 py-3 rounded-full font-semibold hover:bg-primary hover:text-white transition">
-              <i class="fas fa-info-circle"></i> Xizmatlar
+            <a href="#order" class="bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-red-700 transition shadow-lg">
+              <i class="fas fa-calendar-alt mr-2"></i>Onlayn yozilish
             </a>
           </div>
         </div>
         <div class="flex-1 flex justify-center">
-          <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-30"></div>
-            <img src="https://placehold.co/500x450/1d3557/white?text=Premium+Auto+Service" alt="Avto xizmat" class="relative rounded-3xl shadow-2xl w-full max-w-md">
-          </div>
+          <img src="https://placehold.co/500x450/1d3557/white?text=Premium+Auto+Service" class="rounded-3xl shadow-2xl max-w-md">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES SECTION -->
+  <!-- SERVICES -->
   <section id="services" class="py-20 bg-white">
     <div class="container mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-primary font-semibold uppercase tracking-wider text-sm">Bizning xizmatlar</span>
+      <div class="text-center mb-16">
+        <span class="text-primary font-semibold uppercase text-sm">Xizmatlar</span>
         <h2 class="text-4xl font-bold mt-3">Nimani taklif qilamiz?</h2>
         <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-        <p class="text-gray-600 mt-4">Sifat va ishonch kafolati bilan eng yaxshi xizmat ko'rsatamiz</p>
       </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="service-card bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5 shadow-lg">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
             <i class="fas fa-microchip text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">Kompyuter diagnostika</h3>
-          <p class="text-gray-600">To'liq elektron tizim tekshiruvi, xatoliklarni aniqlash</p>
+          <h3 class="text-xl font-bold">Kompyuter diagnostika</h3>
+          <p class="text-gray-600 mt-2">To'liq elektron tizim tekshiruvi</p>
         </div>
-        
-        <div class="service-card bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5 shadow-lg">
+        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
             <i class="fas fa-oil-can text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">Moy almashtirish</h3>
-          <p class="text-gray-600">Original moylar, filtrlar va tezkor xizmat</p>
+          <h3 class="text-xl font-bold">Moy almashtirish</h3>
+          <p class="text-gray-600 mt-2">Original moylar va filtrlar</p>
         </div>
-        
-        <div class="service-card bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5 shadow-lg">
+        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
             <i class="fas fa-car-battery text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">Elektr tizimi</h3>
-          <p class="text-gray-600">Generator, starter, akkumulyator ta'miri</p>
+          <h3 class="text-xl font-bold">Elektr tizimi</h3>
+          <p class="text-gray-600 mt-2">Generator, starter, akkumulyator</p>
         </div>
-        
-        <div class="service-card bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg border border-gray-100">
-          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5 shadow-lg">
+        <div class="service-card bg-gray-50 rounded-2xl p-6 shadow-lg">
+          <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-5">
             <i class="fas fa-car text-white text-2xl"></i>
           </div>
-          <h3 class="text-xl font-bold mb-2">Shina xizmati</h3>
-          <p class="text-gray-600">Shina montaj, balansirovka, saqlash</p>
+          <h3 class="text-xl font-bold">Shina xizmati</h3>
+          <p class="text-gray-600 mt-2">Montaj, balansirovka, saqlash</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATISTICS SECTION -->
+  <!-- STATISTICS -->
   <section id="stats" class="py-20 gradient-bg">
     <div class="container mx-auto px-6">
       <div class="grid md:grid-cols-4 gap-8 text-center">
-        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
-          <i class="fas fa-smile text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold text-primary">5000+</div>
-          <p class="mt-2 text-secondary font-semibold">Mamnun mijozlar</p>
-        </div>
-        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
-          <i class="fas fa-tools text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold text-primary">15000+</div>
-          <p class="mt-2 text-secondary font-semibold">Ta'mirlangan avto</p>
-        </div>
-        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
-          <i class="fas fa-clock text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold text-primary">10+</div>
-          <p class="mt-2 text-secondary font-semibold">Yillik tajriba</p>
-        </div>
-        <div class="stat-card bg-white/95 rounded-2xl p-6 shadow-xl">
-          <i class="fas fa-star text-4xl mb-3 text-primary"></i>
-          <div class="text-4xl font-bold text-primary">4.9</div>
-          <p class="mt-2 text-secondary font-semibold">O'rtacha reyting</p>
-        </div>
+        <div class="stat-card"><i class="fas fa-smile text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">5000+</div><p class="mt-2 font-semibold">Mamnun mijozlar</p></div>
+        <div class="stat-card"><i class="fas fa-tools text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">15000+</div><p class="mt-2 font-semibold">Ta'mirlangan avto</p></div>
+        <div class="stat-card"><i class="fas fa-clock text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">10+</div><p class="mt-2 font-semibold">Yillik tajriba</p></div>
+        <div class="stat-card"><i class="fas fa-star text-4xl mb-3 text-primary"></i><div class="text-4xl font-bold stat-number">4.9</div><p class="mt-2 font-semibold">O'rtacha reyting</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ORDER FORM SECTION -->
-  <section id="order" class="py-20 bg-gradient-to-br from-gray-50 to-white">
+  <!-- ORDER FORM -->
+  <section id="order" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 max-w-5xl">
       <div class="text-center mb-12">
-        <span class="text-primary font-semibold uppercase tracking-wider text-sm">Buyurtma</span>
+        <span class="text-primary font-semibold uppercase text-sm">Buyurtma</span>
         <h2 class="text-4xl font-bold mt-3">Hoziroq yoziling</h2>
         <div class="w-24 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
-        <p class="text-gray-600 mt-4">Tez va sifatli xizmat uchun arizangizni qoldiring</p>
       </div>
       
       <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -259,74 +167,43 @@
           <div class="gradient-bg p-8 text-white">
             <i class="fas fa-headset text-5xl mb-6"></i>
             <h3 class="text-2xl font-bold mb-4">Tez va ishonchli</h3>
-            <p class="mb-6 opacity-90">Arizangiz qabul qilingandan so'ng, 15 daqiqa ichida siz bilan bog'lanamiz</p>
-            <div class="space-y-4">
-              <div class="flex items-center gap-3">
-                <i class="fas fa-phone-alt w-6"></i>
-                <span>+996 700 123 456</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-envelope w-6"></i>
-                <span>info@avtoxizmat.kg</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fas fa-map-marker-alt w-6"></i>
-                <span>Bishkek, Abdrahmanov 123</span>
-              </div>
+            <p class="mb-6">Arizangiz qabul qilingandan so'ng, tez orada bog'lanamiz</p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3"><i class="fas fa-phone-alt w-6"></i><span>+996 700 123 456</span></div>
+              <div class="flex items-center gap-3"><i class="fas fa-envelope w-6"></i><span>info@avtoxizmat.kg</span></div>
             </div>
           </div>
           
           <div class="p-8">
-            <form id="orderForm" class="space-y-5">
+            <form id="orderForm" class="space-y-4">
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-user text-primary mr-2"></i>Ism <span class="text-primary">*</span>
-                </label>
-                <input type="text" id="ism" name="ism" required placeholder="Ismingiz" 
-                       class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition">
+                <label class="block text-sm font-semibold mb-2"><i class="fas fa-user text-primary mr-2"></i>Ism <span class="text-primary">*</span></label>
+                <input type="text" id="ism" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
                 <div class="text-red-500 text-xs mt-1 hidden error-ism"></div>
               </div>
               
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-user-tag text-primary mr-2"></i>Familiya
-                </label>
-                <input type="text" id="familiya" name="familiya" placeholder="Familiyangiz" 
-                       class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition">
-                <div class="text-red-500 text-xs mt-1 hidden error-familiya"></div>
+                <label class="block text-sm font-semibold mb-2"><i class="fas fa-user-tag text-primary mr-2"></i>Familiya</label>
+                <input type="text" id="familiya" class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none">
               </div>
               
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-phone-alt text-primary mr-2"></i>Telefon raqam <span class="text-primary">*</span>
-                </label>
+                <label class="block text-sm font-semibold mb-2"><i class="fas fa-phone-alt text-primary mr-2"></i>Telefon <span class="text-primary">*</span></label>
                 <div class="flex">
-                  <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-xl px-4 flex items-center text-gray-600 font-medium">+996</span>
-                  <input type="tel" id="nomer" name="nomer" required placeholder="700123456" maxlength="9" 
-                         class="w-full border border-gray-300 rounded-r-xl px-4 py-3 input-focus outline-none transition">
+                  <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-xl px-4 flex items-center">+996</span>
+                  <input type="tel" id="nomer" placeholder="700123456" maxlength="9" class="w-full border border-gray-300 rounded-r-xl px-4 py-3 input-focus outline-none">
                 </div>
-                <p class="text-xs text-gray-400 mt-1">9 xonali raqam (masalan: 700123456)</p>
                 <div class="text-red-500 text-xs mt-1 hidden error-nomer"></div>
               </div>
               
               <div>
-                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                  <i class="fas fa-comment-dots text-primary mr-2"></i>Izoh
-                </label>
-                <textarea id="izoh" name="izoh" rows="3" placeholder="Avtomobil modeli, yili, kerakli xizmat..." 
-                          class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none transition resize-none"></textarea>
+                <label class="block text-sm font-semibold mb-2"><i class="fas fa-comment-dots text-primary mr-2"></i>Izoh</label>
+                <textarea id="izoh" rows="3" placeholder="Avtomobil modeli, muammo..." class="w-full border border-gray-300 rounded-xl px-4 py-3 input-focus outline-none resize-none"></textarea>
               </div>
               
-              <input type="hidden" id="vaqt" name="vaqt">
-              
-              <button type="submit" id="submitBtn" 
-                      class="w-full gradient-bg text-white font-bold py-3.5 rounded-xl transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-lg">
+              <button type="submit" id="submitBtn" class="w-full gradient-bg text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
                 <i class="fas fa-paper-plane"></i> Buyurtma yuborish
               </button>
-              
-              <p class="text-xs text-center text-gray-400 mt-3">
-                <i class="fas fa-lock mr-1"></i> Ma'lumotlaringiz xavfsiz himoyalangan
-              </p>
             </form>
           </div>
         </div>
@@ -334,209 +211,105 @@
     </div>
   </section>
 
-  <footer class="bg-dark text-gray-400 py-12">
-    <div class="container mx-auto px-6">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center space-x-2 mb-4">
-            <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
-              <i class="fas fa-car text-white text-sm"></i>
-            </div>
-            <span class="font-bold text-xl text-white">AvtoXizmat</span>
-          </div>
-          <p class="text-sm">Professional avtomobil xizmati. Sifat va ishonch kafolati.</p>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Xizmatlar</h4>
-          <ul class="space-y-2 text-sm">
-            <li>Kompyuter diagnostika</li>
-            <li>Moy almashtirish</li>
-            <li>Elektr tizimi</li>
-            <li>Shina xizmati</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Ish vaqti</h4>
-          <ul class="space-y-2 text-sm">
-            <li>Dushanba - Shanba: 09:00 - 20:00</li>
-            <li>Yakshanba: 10:00 - 17:00</li>
-            <li>24/7 avariya xizmati</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-4">Ijtimoiy tarmoqlar</h4>
-          <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"><i class="fab fa-telegram"></i></a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-        <p>© 2025 AvtoXizmat. Barcha huquqlar himoyalangan.</p>
-      </div>
-    </div>
+  <footer class="bg-dark text-gray-400 py-8 text-center">
+    <p>© 2025 AvtoXizmat. Barcha huquqlar himoyalangan.</p>
   </footer>
 
   <div id="toastMessage" class="toast-message hidden"></div>
 
   <script>
-    (function() {
-      // =====================================================
-      // ⚠️ O'ZINGIZNING GOOGLE SCRIPT URL NI KIRITING ⚠️
-      // =====================================================
-      const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbxEFWkjx4ARBe-ykYxS56EyNHfaac6Au28FULejR0shrqPD9J7UC5rnORD4LJbHSV1x/exec";
+    // =====================================================
+    // O'Z APPS SCRIPT URL INGIZNI KIRITING
+    // =====================================================
+    const API_URL = "https://script.google.com/macros/s/AKfycby0Qo5bX_EVzNgQqh8OAp4SPs2eDkDeoc0PC8gP7n_lVuqlrdX6TOAkS0smwOna6NnJ/exec";
+    
+    const form = document.getElementById('orderForm');
+    const ismInput = document.getElementById('ism');
+    const familiyaInput = document.getElementById('familiya');
+    const nomerInput = document.getElementById('nomer');
+    const izohInput = document.getElementById('izoh');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    function showToast(message, isError = false) {
+      const toast = document.getElementById('toastMessage');
+      toast.className = 'toast-message px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
+      toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 4000);
+    }
+    
+    function showError(fieldId, msg) {
+      const errDiv = document.querySelector(`.error-${fieldId}`);
+      const input = document.getElementById(fieldId);
+      if (errDiv) { errDiv.innerText = msg; errDiv.classList.remove('hidden'); }
+      if (input) input.classList.add('error-border');
+    }
+    
+    function clearError(fieldId) {
+      const errDiv = document.querySelector(`.error-${fieldId}`);
+      const input = document.getElementById(fieldId);
+      if (errDiv) errDiv.classList.add('hidden');
+      if (input) input.classList.remove('error-border');
+    }
+    
+    function getCurrentDateTime() {
+      const now = new Date();
+      return now.toLocaleString('uz-UZ', {timeZone: 'Asia/Bishkek'});
+    }
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       
-      const form = document.getElementById('orderForm');
-      const ismInput = document.getElementById('ism');
-      const familiyaInput = document.getElementById('familiya');
-      const nomerInput = document.getElementById('nomer');
-      const izohInput = document.getElementById('izoh');
-      const vaqtHidden = document.getElementById('vaqt');
-      const submitBtn = document.getElementById('submitBtn');
+      // Validatsiya
+      let isValid = true;
+      const ism = ismInput.value.trim();
+      if (!ism) { showError('ism', 'Ismingizni kiriting'); isValid = false; }
+      else { clearError('ism'); }
       
-      function showToast(message, isError = false) {
-        const toast = document.getElementById('toastMessage');
-        toast.className = 'toast-message fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg shadow-lg text-white ' + (isError ? 'bg-red-500' : 'bg-green-500');
-        toast.innerHTML = '<i class="fas ' + (isError ? 'fa-exclamation-triangle' : 'fa-check-circle') + ' mr-2"></i>' + message;
-        toast.classList.remove('hidden');
-        setTimeout(() => {
-          toast.classList.add('hidden');
-        }, 4000);
-      }
+      const digits = nomerInput.value.trim().replace(/\D/g, '');
+      if (digits.length !== 9) { showError('nomer', '9 xonali raqam kiriting'); isValid = false; }
+      else { clearError('nomer'); nomerInput.value = digits; }
       
-      function showFieldError(fieldId, message) {
-        const errDiv = document.querySelector(`.error-${fieldId}`);
-        const inputEl = document.getElementById(fieldId);
-        if (errDiv) {
-          errDiv.innerText = message;
-          errDiv.classList.remove('hidden');
-        }
-        if (inputEl) inputEl.classList.add('error-border');
-      }
+      if (!isValid) return;
       
-      function clearFieldError(fieldId) {
-        const errDiv = document.querySelector(`.error-${fieldId}`);
-        if (errDiv) {
-          errDiv.innerText = '';
-          errDiv.classList.add('hidden');
-        }
-        const inputEl = document.getElementById(fieldId);
-        if (inputEl) inputEl.classList.remove('error-border');
-      }
+      // Yuborish
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="loading-spinner"></span> Yuborilmoqda...';
       
-      function validateForm() {
-        let isValid = true;
-        const ism = ismInput.value.trim();
-        if (!ism) {
-          showFieldError('ism', 'Ismingizni kiriting');
-          isValid = false;
-        } else {
-          clearFieldError('ism');
-        }
-        
-        let digitsOnly = nomerInput.value.trim().replace(/\D/g, '');
-        if (digitsOnly.length !== 9) {
-          showFieldError('nomer', 'Telefon raqam 9 xonali bo‘lishi kerak');
-          isValid = false;
-        } else {
-          clearFieldError('nomer');
-          nomerInput.value = digitsOnly;
-        }
-        
-        return isValid;
-      }
+      const data = {
+        ism: ismInput.value.trim(),
+        familiya: familiyaInput.value.trim() || "-",
+        nomer: `+996${nomerInput.value.trim()}`,
+        izoh: izohInput.value.trim() || "-",
+        vaqt: getCurrentDateTime()
+      };
       
-      function getCurrentDateTime() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-      }
-      
-      function getFormData() {
-        return {
-          ism: ismInput.value.trim(),
-          familiya: familiyaInput.value.trim() || "-",
-          nomer: `+996${nomerInput.value.trim()}`,
-          izoh: izohInput.value.trim() || "-",
-          vaqt: getCurrentDateTime()
-        };
-      }
-      
-      async function sendToGoogleSheets(orderData) {
-        if (GOOGLE_SHEET_API_URL.includes("YOUR_SCRIPT_ID")) {
-          console.warn("⚠️ Google Sheet URL sozlanmagan!");
-          console.log("Ma'lumot:", orderData);
-          showToast("Test rejimi: Google Sheet URL sozlanmagan! Ma'lumotlar konsolga yozildi.", false);
-          return { success: true, mock: true };
-        }
-        
-        try {
-          const response = await fetch(GOOGLE_SHEET_API_URL, {
-            method: 'POST',
-            mode: 'cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(orderData)
-          });
-          
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-          }
-          
-          const result = await response.json();
-          return { success: true, data: result };
-        } catch (error) {
-          console.error("Xato:", error);
-          return { success: false, error: error.message };
-        }
-      }
-      
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!validateForm()) return;
-        
-        submitBtn.disabled = true;
-        const originalHtml = submitBtn.innerHTML;
-        submitBtn.innerHTML = `<span class="loading-spinner"></span> Yuborilmoqda...`;
-        
-        const order = getFormData();
-        vaqtHidden.value = order.vaqt;
-        
-        const result = await sendToGoogleSheets(order);
-        
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalHtml;
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
         
         if (result.success) {
-          showToast("✅ Buyurtma qabul qilindi! Tez orada bog'lanamiz.", false);
+          showToast('✅ Buyurtma qabul qilindi! Tez orada bog\'lanamiz.');
           form.reset();
-          nomerInput.value = '';
         } else {
-          showToast("❌ Xatolik: " + (result.error || "Qaytadan urining"), true);
+          showToast('❌ Xatolik: ' + (result.error || 'Qaytadan urining'), true);
         }
-      });
-      
-      nomerInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '').slice(0,9);
-      });
-      
-      vaqtHidden.value = getCurrentDateTime();
-      setInterval(() => {
-        vaqtHidden.value = getCurrentDateTime();
-      }, 1000);
-      
-      if (GOOGLE_SHEET_API_URL.includes("YOUR_SCRIPT_ID")) {
-        console.log("%c⚠️ DIQQAT! Google Sheet URL sozlanmagan!", "color: red; font-size: 16px");
-        console.log("%cHTML faylidagi GOOGLE_SHEET_API_URL ni o'z URL ingiz bilan almashtiring", "color: orange; font-size: 14px");
-      } else {
-        console.log("%c✅ Google Sheet URL sozlangan: " + GOOGLE_SHEET_API_URL, "color: green; font-size: 14px");
+      } catch (error) {
+        showToast('❌ Server bilan bog\'lanishda xatolik', true);
+        console.error(error);
       }
-    })();
+      
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Buyurtma yuborish';
+    });
+    
+    nomerInput.addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '').slice(0,9);
+    });
   </script>
 </body>
 </html>
