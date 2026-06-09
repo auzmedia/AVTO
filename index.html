@@ -4,51 +4,151 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AvtoXizmat | Professional avtomobil xizmati</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { font-family: 'Inter', sans-serif; }
+    body { margin: 0; padding: 0; background: #f8fafc; }
     .gradient-bg { background: linear-gradient(135deg, #e63946 0%, #c1121f 100%); }
     .toast { position: fixed; bottom: 20px; right: 20px; z-index: 1000; padding: 12px 24px; border-radius: 12px; animation: slideIn 0.3s ease; }
     @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     .loading { display: inline-block; width: 18px; height: 18px; border: 2px solid #fff; border-radius: 50%; border-top-color: transparent; animation: spin 0.6s linear infinite; margin-right: 8px; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .error-border { border-color: #e63946 !important; background: #fff5f5 !important; }
+    .service-card { transition: all 0.3s ease; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.15); }
+  </style>
+  <style>
+    /* Tailwind CSS dan faqat kerakli qismlar */
+    .container { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .text-center { text-align: center; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .rounded-full { border-radius: 9999px; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-3xl { border-radius: 1.5rem; }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+    .bg-white { background: white; }
+    .bg-gray-50 { background: #f8fafc; }
+    .bg-gray-100 { background: #f1f5f9; }
+    .bg-gray-900 { background: #0f172a; }
+    .text-white { color: white; }
+    .text-gray-600 { color: #475569; }
+    .text-gray-400 { color: #94a3b8; }
+    .text-red-600 { color: #e63946; }
+    .border { border-width: 1px; }
+    .border-gray-300 { border-color: #cbd5e1; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .px-8 { padding-left: 2rem; padding-right: 2rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+    .pt-32 { padding-top: 8rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-8 { margin-top: 2rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-8 { gap: 2rem; }
+    .gap-12 { gap: 3rem; }
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .w-full { width: 100%; }
+    .w-10 { width: 2.5rem; }
+    .w-16 { width: 4rem; }
+    .w-24 { width: 6rem; }
+    .h-1 { height: 0.25rem; }
+    .h-10 { height: 2.5rem; }
+    .h-16 { height: 4rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .max-w-md { max-width: 28rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .outline-none { outline: none; }
+    .transition { transition: all 0.3s ease; }
+    .hover\:opacity-90:hover { opacity: 0.9; }
+    .hover\:shadow-xl:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .fixed { position: fixed; }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .z-50 { z-index: 50; }
+    .backdrop-blur-md { backdrop-filter: blur(12px); }
+    .bg-white\/95 { background-color: rgba(255,255,255,0.95); }
+    .hidden { display: none; }
+    .inline-block { display: inline-block; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .text-5xl { font-size: 3rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-xs { font-size: 0.75rem; }
+    .tracking-tight { letter-spacing: -0.025em; }
+    .leading-tight { line-height: 1.25; }
+    .flex-1 { flex: 1 1 0%; }
+    .flex-wrap { flex-wrap: wrap; }
+    .resize-none { resize: none; }
+    @media (min-width: 768px) {
+      .md\:flex { display: flex; }
+      .md\:text-left { text-align: left; }
+      .md\:text-6xl { font-size: 3.75rem; }
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (max-width: 768px) {
+      .hidden { display: none; }
+    }
   </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
   <nav class="fixed w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center flex-wrap">
       <div class="flex items-center gap-2">
         <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
           <i class="fas fa-car text-white"></i>
         </div>
-        <span class="font-bold text-2xl">Avto<span class="text-red-600">Xizmat</span></span>
+        <span class="font-bold text-2xl tracking-tight">Avto<span class="text-red-600">Xizmat</span></span>
       </div>
       <div class="hidden md:flex gap-8">
-        <a href="#home" class="hover:text-red-600 transition">Bosh sahifa</a>
-        <a href="#services" class="hover:text-red-600 transition">Xizmatlar</a>
-        <a href="#order" class="hover:text-red-600 transition">Buyurtma</a>
+        <a href="#home" class="text-gray-600 hover:text-red-600 transition">Bosh sahifa</a>
+        <a href="#services" class="text-gray-600 hover:text-red-600 transition">Xizmatlar</a>
+        <a href="#order" class="text-gray-600 hover:text-red-600 transition">Buyurtma</a>
       </div>
-      <a href="#order" class="gradient-bg text-white px-5 py-2 rounded-full hover:opacity-90 transition">Yozilish</a>
+      <a href="#order" class="gradient-bg text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">Yozilish</a>
     </div>
   </nav>
 
   <section id="home" class="pt-32 pb-20">
     <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-12">
-        <div class="flex-1 text-center lg:text-left">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 text-center md:text-left">
           <div class="inline-flex items-center gap-2 bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <i class="fas fa-star text-xs"></i> 10+ yillik tajriba
           </div>
-          <h1 class="text-5xl lg:text-6xl font-bold">Avtomobilingiz <span class="text-red-600">professional</span> qo'llarda</h1>
+          <h1 class="text-5xl md:text-6xl font-bold leading-tight">Avtomobilingiz <span class="text-red-600">professional</span> qo'llarda</h1>
           <p class="text-gray-600 text-lg mt-6">Zamonaviy diagnostika, tajribali ustalar va sifatli ehtiyot qismlar.</p>
           <a href="#order" class="inline-block mt-8 gradient-bg text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition">Onlayn yozilish</a>
         </div>
-        <div class="flex-1">
-          <img src="https://placehold.co/500x450/1d3557/white?text=Auto+Service" class="rounded-3xl shadow-2xl">
+        <div class="flex-1 flex justify-center">
+          <img src="https://placehold.co/500x450/1d3557/white?text=Auto+Service" class="rounded-3xl shadow-2xl max-w-md">
         </div>
       </div>
     </div>
@@ -60,26 +160,26 @@
         <h2 class="text-4xl font-bold">Xizmatlarimiz</h2>
         <div class="w-24 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>
       </div>
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="bg-gray-50 p-6 rounded-2xl text-center hover:shadow-xl transition">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="service-card bg-gray-50 p-6 rounded-2xl text-center">
           <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-microchip text-white text-2xl"></i>
           </div>
           <h3 class="font-bold text-lg">Kompyuter diagnostika</h3>
         </div>
-        <div class="bg-gray-50 p-6 rounded-2xl text-center hover:shadow-xl transition">
+        <div class="service-card bg-gray-50 p-6 rounded-2xl text-center">
           <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-oil-can text-white text-2xl"></i>
           </div>
           <h3 class="font-bold text-lg">Moy almashtirish</h3>
         </div>
-        <div class="bg-gray-50 p-6 rounded-2xl text-center hover:shadow-xl transition">
+        <div class="service-card bg-gray-50 p-6 rounded-2xl text-center">
           <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-car-battery text-white text-2xl"></i>
           </div>
           <h3 class="font-bold text-lg">Elektr tizimi</h3>
         </div>
-        <div class="bg-gray-50 p-6 rounded-2xl text-center hover:shadow-xl transition">
+        <div class="service-card bg-gray-50 p-6 rounded-2xl text-center">
           <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
             <i class="fas fa-car text-white text-2xl"></i>
           </div>
@@ -112,27 +212,27 @@
             <form id="orderForm" class="space-y-4">
               <div>
                 <label class="block font-semibold mb-1">Ism <span class="text-red-600">*</span></label>
-                <input type="text" id="ism" class="w-full border rounded-xl px-4 py-3 outline-none focus:border-red-600" placeholder="Ismingiz">
+                <input type="text" id="ism" class="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-red-600 transition" placeholder="Ismingiz">
                 <div class="text-red-500 text-xs mt-1 hidden error-ism"></div>
               </div>
               
               <div>
                 <label class="block font-semibold mb-1">Familiya</label>
-                <input type="text" id="familiya" class="w-full border rounded-xl px-4 py-3 outline-none focus:border-red-600" placeholder="Familiyangiz">
+                <input type="text" id="familiya" class="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-red-600 transition" placeholder="Familiyangiz">
               </div>
               
               <div>
                 <label class="block font-semibold mb-1">Telefon <span class="text-red-600">*</span></label>
                 <div class="flex">
-                  <span class="bg-gray-100 border rounded-l-xl px-4 flex items-center">+996</span>
-                  <input type="tel" id="nomer" maxlength="9" class="w-full border rounded-r-xl px-4 py-3 outline-none focus:border-red-600" placeholder="700123456">
+                  <span class="bg-gray-100 border border-r-0 border-gray-300 rounded-l-xl px-4 flex items-center">+996</span>
+                  <input type="tel" id="nomer" maxlength="9" class="w-full border border-gray-300 rounded-r-xl px-4 py-3 outline-none focus:border-red-600 transition" placeholder="700123456">
                 </div>
                 <div class="text-red-500 text-xs mt-1 hidden error-nomer"></div>
               </div>
               
               <div>
                 <label class="block font-semibold mb-1">Izoh</label>
-                <textarea id="izoh" rows="3" class="w-full border rounded-xl px-4 py-3 outline-none focus:border-red-600" placeholder="Avtomobil modeli, muammo..."></textarea>
+                <textarea id="izoh" rows="3" class="w-full border border-gray-300 rounded-xl px-4 py-3 outline-none focus:border-red-600 transition resize-none" placeholder="Avtomobil modeli, muammo..."></textarea>
               </div>
               
               <button type="submit" id="submitBtn" class="w-full gradient-bg text-white font-bold py-3 rounded-xl hover:opacity-90 transition flex items-center justify-center gap-2">
@@ -152,7 +252,9 @@
   <div id="toast" class="toast hidden"></div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbw8Wz15cSyRREn9ezu1TSaGY9gTiuJ5yKh7Ebg13aonFp-2PvOY0-BLQD8BdLwdY6c/exec";
+    // ⚠️ MUHIM: O'ZINGIZNING APPS SCRIPT URL INGIZNI SHU YERGA YOZING ⚠️
+    // Apps Script deploy qilgandan keyin olingan URL ni quyidagiga joylashtiring
+    const API_URL = "https://script.google.com/macros/s/AKfycbxgPHpcgHi89C8LzIJlEaU7fsoCixYBRyut5rtNoNfOjjP4sBx8U-dHH14SadQBnRlu/exec";
     
     const form = document.getElementById('orderForm');
     const ism = document.getElementById('ism');
@@ -216,6 +318,7 @@
       try {
         const res = await fetch(API_URL, {
           method: 'POST',
+          mode: 'cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         });
@@ -228,7 +331,8 @@
           showToast('❌ Xatolik: ' + (result.error || 'Qaytadan urining'), true);
         }
       } catch(err) {
-        showToast('❌ Server bilan bog\'lanishda xatolik', true);
+        console.error('Xatolik:', err);
+        showToast('❌ Server bilan bog\'lanishda xatolik. Internet aloqangizni tekshiring.', true);
       }
       
       submitBtn.disabled = false;
