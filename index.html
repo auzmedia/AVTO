@@ -3,347 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Avto Xizmat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Premium Auto Service | Professional Avto Xizmat</title>
+    <meta name="description" content="Eng sifatli avto xizmat, professional diagnostika va remont. 5 yillik tajriba, 100% kafolat">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Inter', sans-serif;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8); }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .glow-animation {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .notification-slide {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        /* Header */
-        .header {
-            background: rgba(0,0,0,0.9);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
+        
+        .card-hover {
+            transition: all 0.3s ease;
         }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-
-        .logo {
-            font-size: 24px;
+        
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .counter {
+            font-size: 3rem;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
-
-        .nav-links a:hover {
-            color: #764ba2;
-        }
-
-        /* Hero */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: white;
-            color: #764ba2;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Services */
-        .services {
-            background: white;
-            padding: 60px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 40px;
-            color: #333;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            text-align: center;
-            padding: 30px;
-            border-radius: 15px;
-            background: #f8f9fa;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        /* Form */
-        .form-section {
-            padding: 60px 0;
-        }
-
-        .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .form-container h2 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .form-container p {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #764ba2;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
+        
+        ::-webkit-scrollbar-thumb {
             background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        .notification {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 10px;
-            color: white;
-            z-index: 2000;
-            animation: slideIn 0.3s ease;
-        }
-
-        .notification.success {
-            background: #10b981;
-        }
-
-        .notification.error {
-            background: #ef4444;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-            .hero p {
-                font-size: 16px;
-            }
-            .form-container {
-                margin: 0 20px;
-                padding: 30px;
-            }
-            .nav {
-                flex-direction: column;
-                gap: 10px;
-            }
+            border-radius: 5px;
         }
     </style>
 </head>
-<body>
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">🚗 Premium Auto</div>
-                <div class="nav-links">
-                    <a href="#home">Bosh sahifa</a>
-                    <a href="#services">Xizmatlar</a>
-                    <a href="#order">Buyurtma</a>
+<body class="bg-gray-50">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg">
+        <div class="container mx-auto px-4 md:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-car text-3xl gradient-text"></i>
+                    <span class="text-2xl font-bold gradient-text">Premium Auto</span>
                 </div>
-            </nav>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-indigo-600 transition font-semibold">Bosh sahifa</a>
+                    <a href="#services" class="text-gray-700 hover:text-indigo-600 transition font-semibold">Xizmatlar</a>
+                    <a href="#features" class="text-gray-700 hover:text-indigo-600 transition font-semibold">Afzalliklar</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-indigo-600 transition font-semibold">Narxlar</a>
+                    <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition font-semibold">Aloqa</a>
+                </div>
+                <a href="#order" class="hidden md:block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105">
+                    <i class="fas fa-calendar-alt mr-2"></i>Buyurtma
+                </a>
+                <button id="mobileMenuBtn" class="md:hidden text-2xl text-gray-700">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Professional Avto Xizmat</h1>
-            <p>Sizning mashinangiz professional yondashuvga loyiq</p>
-            <a href="#order" class="btn">Buyurtma Berish</a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-40 hidden transform transition-transform duration-300">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home" class="text-2xl text-gray-800 hover:text-indigo-600">Bosh sahifa</a>
+            <a href="#services" class="text-2xl text-gray-800 hover:text-indigo-600">Xizmatlar</a>
+            <a href="#features" class="text-2xl text-gray-800 hover:text-indigo-600">Afzalliklar</a>
+            <a href="#pricing" class="text-2xl text-gray-800 hover:text-indigo-600">Narxlar</a>
+            <a href="#contact" class="text-2xl text-gray-800 hover:text-indigo-600">Aloqa</a>
+            <a href="#order" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-full text-xl">Buyurtma</a>
+            <button id="closeMenuBtn" class="absolute top-8 right-8 text-3xl text-gray-600">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 gradient-bg opacity-90"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3')] bg-cover bg-center mix-blend-overlay"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white">
+                <div class="float-animation mb-6">
+                    <i class="fas fa-wrench text-6xl md:text-7xl"></i>
+                </div>
+                <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+                    Professional <span class="text-yellow-400">Avto Xizmat</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-3xl mx-auto">
+                    Sizning mashinangiz eng sifatli xizmatga loyiq. 5+ yillik tajriba, 100% kafolat
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="#order" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-calendar-check"></i>
+                        Hoziroq Buyurtma
+                    </a>
+                    <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition inline-flex items-center justify-center gap-2">
+                        <i class="fas fa-play"></i>
+                        Xizmatlar
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="counter" data-target="1520">0</div>
+                        <div class="text-sm mt-2">Mijozlar</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="counter" data-target="98">0</div>
+                        <div class="text-sm mt-2">% Mijozlar mamnun</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="counter" data-target="5">0</div>
+                        <div class="text-sm mt-2">Yillik tajriba</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                        <div class="counter" data-target="24">0</div>
+                        <div class="text-sm mt-2">/7 Xizmat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
         </div>
     </section>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Bizning Xizmatlar</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Diagnostika</h3>
-                    <p>Kompyuter diagnostikasi</p>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-indigo-600 font-semibold text-sm uppercase tracking-wider">Xizmatlar</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4">Bizning <span class="gradient-text">Professional Xizmatlar</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Eng zamonaviy jihozlar va tajribali mutaxassislar</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-microchip text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Kompyuter Diagnostikasi</h3>
+                        <p class="text-gray-600 mb-4">Zamonaviy diagnostika uskunalari bilan to'liq tekshiruv</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">50 000 so'm</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Remont</h3>
-                    <p>Har qanday remont</p>
+                
+                <!-- Service 2 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-oil-can text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Dvigatel Remonti</h3>
+                        <p class="text-gray-600 mb-4">Har qanday murakkablikdagi dvigatel remonti</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">200 000 so'mdan</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🛠️</div>
-                    <h3>Texnik xizmat</h3>
-                    <p>Muntazam tekshiruv</p>
+                
+                <!-- Service 3 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-car-battery text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Elektr Tizimlari</h3>
+                        <p class="text-gray-600 mb-4">Avtomobil elektr tizimlarini ta'mirlash</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">80 000 so'mdan</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-temperature-low text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Konditsioner</h3>
+                        <p class="text-gray-600 mb-4">Konditsioner to'ldirish va remont</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">100 000 so'm</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-balance-scale text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Shassi Remonti</h3>
+                        <p class="text-gray-600 mb-4">Podveska va rуль boshqaruvi</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">150 000 so'mdan</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="gradient-bg p-8 text-center">
+                        <i class="fas fa-tachometer-alt text-5xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Texnik Xizmat</h3>
+                        <p class="text-gray-600 mb-4">Muntazam texnik ko'rik va xizmat</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-indigo-600 font-bold text-xl">300 000 so'm</span>
+                            <a href="#order" class="text-indigo-600 font-semibold hover:text-indigo-800">Batafsil →</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="order" class="form-section">
-        <div class="container">
-            <div class="form-container">
-                <h2>📝 Buyurtma Qilish</h2>
-                <p>Hoziroq buyurtma bering!</p>
-                <form id="orderForm">
-                    <div class="form-group">
-                        <label>Ismingiz *</label>
-                        <input type="text" id="ism" required placeholder="Ismingiz">
+    <!-- Features Section -->
+    <section id="features" class="py-20 gradient-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-white/80 font-semibold text-sm uppercase tracking-wider">Afzalliklar</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4 text-white">Nega <span class="text-yellow-400">Bizni Tanlashadi?</span></h2>
+                <p class="text-white/80 max-w-2xl mx-auto">Bizning ustunliklarimiz</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center text-white">
+                    <div class="bg-white/10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 backdrop-blur-md">
+                        <i class="fas fa-star text-4xl text-yellow-400"></i>
                     </div>
-                    <div class="form-group">
-                        <label>Familiyangiz *</label>
-                        <input type="text" id="familiya" required placeholder="Familiyangiz">
+                    <h3 class="text-xl font-bold mb-2">5+ Yillik Tajriba</h3>
+                    <p class="text-white/70">Professional ustalar va zamonaviy jihozlar</p>
+                </div>
+                
+                <div class="text-center text-white">
+                    <div class="bg-white/10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 backdrop-blur-md">
+                        <i class="fas fa-shield-alt text-4xl text-green-400"></i>
                     </div>
-                    <div class="form-group">
-                        <label>Telefon raqam *</label>
-                        <input type="tel" id="raqam" required placeholder="+998 xx xxx xx xx">
+                    <h3 class="text-xl font-bold mb-2">1 Yillik Kafolat</h3>
+                    <p class="text-white/70">Barcha ishlarga to'liq kafolat</p>
+                </div>
+                
+                <div class="text-center text-white">
+                    <div class="bg-white/10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 backdrop-blur-md">
+                        <i class="fas fa-clock text-4xl text-blue-400"></i>
                     </div>
-                    <div class="form-group">
-                        <label>Izoh (ixtiyoriy)</label>
-                        <textarea id="izoh" rows="3" placeholder="Qo'shimcha ma'lumot"></textarea>
+                    <h3 class="text-xl font-bold mb-2">Tezkor Xizmat</h3>
+                    <p class="text-white/70">24/7 tezkor xizmat ko'rsatish</p>
+                </div>
+                
+                <div class="text-center text-white">
+                    <div class="bg-white/10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4 backdrop-blur-md">
+                        <i class="fas fa-hand-holding-usd text-4xl text-red-400"></i>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">✅ Yuborish</button>
-                </form>
+                    <h3 class="text-xl font-bold mb-2">Arzon Narxlar</h3>
+                    <p class="text-white/70">Eng qulay narx va chegirmalar</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Premium Avto Xizmat</p>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-indigo-600 font-semibold text-sm uppercase tracking-wider">Narxlar</span>
+                <h2 class="text-3xl md:text-5xl font-bold mt-2 mb-4">Bizning <span class="gradient-text">Maxsus Paketlar</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Sizga eng mos paketni tanlang</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8 text-center border-b">
+                        <h3 class="text-2xl font-bold mb-2">Standart</h3>
+                        <div class="text-4xl font-bold gradient-text mb-4">200 000 so'm</div>
+                        <p class="text-gray-500">Boshlang'ich paket</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Kompyuter diagnostikasi</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Dvigatel tekshiruvi</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Yog' va filtr almashtirish</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 1 oy kafolat</li>
+                        </ul>
+                        <a href="#order" class="mt-8 block text-center bg-gray-100 text-indigo-600 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition">Tanlash</a>
+                    </div>
+                </div>
+                
+                <!-- Premium -->
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden card-hover transform scale-105 border-2 border-indigo-500 relative">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 rounded-bl-2xl text-sm font-semibold">MASHHUR</div>
+                    <div class="gradient-bg p-8 text-center text-white">
+                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                        <div class="text-4xl font-bold mb-4">500 000 so'm</div>
+                        <p class="text-white/80">Eng ko'p tanlangan</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Barcha diagnostika</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> To'liq texnik xizmat</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Dvigatel remonti</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Elektr tizimlari</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 6 oy kafolat</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Bepul evakuator</li>
+                        </ul>
+                        <a href="#order" class="mt-8 block text-center gradient-bg text-white py-3 rounded-full font-semibold hover:shadow-lg transition">Tanlash</a>
+                    </div>
+                </div>
+                
+                <!-- Business -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-8 text-center border-b">
+                        <h3 class="text-2xl font-bold mb-2">Business</h3>
+                        <div class="text-4xl font-bold gradient-text mb-4">1 000 000 so'm</div>
+                        <p class="text-gray-500">Korporativ xizmat</p>
+                    </div>
+                    <div class="p-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Premium paketdagi barcha xizmatlar</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 12 oy kafolat</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Shaxsiy menejer</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 24/7 yordam</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Chegirmalar</li>
+                        </ul>
+                        <a href="#order" class="mt-8 block text-center bg-gray-100 text-indigo-600 py-3 rounded-full font-semibold hover:bg-indigo-600 hover:text-white transition">Tanlash</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="order" class="py-20 gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3')] bg-cover bg-center opacity-10"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <div class="gradient-bg p-8 text-center text-white">
+                        <i class="fas fa-car text-5xl mb-4"></i>
+                        <h2 class="text-3xl font-bold">Hoziroq Buyurtma Bering!</h2>
+                        <p class="mt-2 opacity-95">10% chegirmaga ega bo'ling</p>
+                    </div>
+                    
+                    <form id="orderForm" class="p-8">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                <i class="fas fa-user mr-2 text-indigo-600"></i>Ismingiz *
+                            </label>
+                            <input type="text" id="ism" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 transition"
+                                   placeholder="Ismingizni kiriting">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                <i class="fas fa-user-friends mr-2 text-indigo-600"></i>Familiyangiz *
+                            </label>
+                            <input type="text" id="familiya" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 transition"
+                                   placeholder="Familiyangizni kiriting">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                <i class="fas fa-phone mr-2 text-indigo-600"></i>Telefon raqam *
+                            </label>
+                            <input type="tel" id="raqam" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 transition"
+                                   placeholder="+998 __ ___ __ __">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-semibold mb-2">
+                                <i class="fas fa-comment mr-2 text-indigo-600"></i>Izoh (ixtiyoriy)
+                            </label>
+                            <textarea id="izoh" rows="4" 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 transition"
+                                      placeholder="Avtomobilingiz haqida qo'shimcha ma'lumot..."></textarea>
+                        </div>
+                        
+                        <button type="submit" id="submitBtn" 
+                                class="w-full gradient-bg text-white py-3 rounded-lg font-bold text-lg hover:shadow-lg transition transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i>Buyurtma Yuborish
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="bg-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Manzil</h3>
+                    <p class="text-gray-400">Toshkent sh., Chilonzor tumani</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Telefon</h3>
+                    <p class="text-gray-400">+998 90 123 45 67</p>
+                    <p class="text-gray-400">+998 71 123 45 67</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ish vaqti</h3>
+                    <p class="text-gray-400">Dushanba - Shanba: 09:00 - 20:00</p>
+                    <p class="text-gray-400">Yakshanba: 10:00 - 17:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Premium Avto Xizmat. Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
 
     <script>
-        // ==================== O'Z URL INGIZNI YOZING ====================
+        // ==================== KONFIGURATSIYA ====================
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYYi8bodMPaZoiE3elwGIIEXhY2coIt1_bPzVdDe7nmgt9Bj3OmN8UYxFuuh-wfuHW/exec";
         
+        // ==================== FORMA SUBMIT ====================
         const form = document.getElementById('orderForm');
         const submitBtn = document.getElementById('submitBtn');
         
@@ -356,70 +529,121 @@
             const izoh = document.getElementById('izoh').value.trim();
             
             if (!ism || ism.length < 2) {
-                showNotification("Ismingizni kiriting!", "error");
+                showNotification("❌ Iltimos, ismingizni kiriting!", "error");
                 return;
             }
             
             if (!familiya || familiya.length < 2) {
-                showNotification("Familiyangizni kiriting!", "error");
+                showNotification("❌ Iltimos, familiyangizni kiriting!", "error");
                 return;
             }
             
             if (!raqam || raqam.length < 9) {
-                showNotification("Telefon raqam kiriting!", "error");
+                showNotification("❌ Iltimos, telefon raqamingizni kiriting!", "error");
                 return;
             }
             
             submitBtn.disabled = true;
-            submitBtn.textContent = "Yuborilmoqda...";
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Yuborilmoqda...';
             
             try {
-                const response = await fetch(APPS_SCRIPT_URL, {
+                await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        ism: ism,
-                        familiya: familiya,
-                        raqam: raqam,
-                        izoh: izoh
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ism, familiya, raqam, izoh })
                 });
                 
-                showNotification("✅ Buyurtma qabul qilindi!", "success");
+                showNotification("✅ Buyurtma muvaffaqiyatli qabul qilindi!", "success");
                 form.reset();
                 
             } catch (error) {
-                showNotification("❌ Xatolik! Qaytadan urining.", "error");
+                showNotification("❌ Xatolik yuz berdi! Qaytadan urinib ko'ring.", "error");
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = "✅ Yuborish";
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Buyurtma Yuborish';
             }
         });
         
+        // ==================== NOTIFICATION ====================
         function showNotification(message, type) {
-            const oldNotif = document.querySelector('.notification');
+            const oldNotif = document.querySelector('.notification-slide');
             if (oldNotif) oldNotif.remove();
             
             const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
+            notification.className = `notification-slide fixed top-24 right-4 z-50 px-6 py-3 rounded-lg shadow-lg text-white ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+            notification.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'} mr-2"></i>${message}`;
             document.body.appendChild(notification);
             
             setTimeout(() => notification.remove(), 4000);
         }
         
-        // Smooth scroll
+        // ==================== MOBILE MENU ====================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+        
+        closeMenuBtn?.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // ==================== COUNTER ANIMATION ====================
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const count = parseInt(counter.innerText);
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+        
+        // ==================== SMOOTH SCROLL ====================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
                 }
             });
+        });
+        
+        // ==================== TELEFON FORMAT ====================
+        const phoneInput = document.getElementById('raqam');
+        phoneInput?.addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            if (value.length > 12) value = value.slice(0, 12);
+            if (value.length > 0 && !value.startsWith('998')) {
+                value = '998' + value;
+            }
+            this.value = '+' + value;
+        });
+        
+        // ==================== SCROLL EFFECT ====================
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
         });
     </script>
 </body>
